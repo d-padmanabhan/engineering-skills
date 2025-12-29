@@ -25,6 +25,7 @@ For more information, see [Anthropic's Agent Skills documentation](https://platf
 | **security-testing** | OWASP Top 10, testing strategies, API design |
 | **documentation-standards** | Markdown, Mermaid diagrams, technical writing |
 | **mcp-development** | MCP server patterns and AI/ML integration |
+| **database-postgresql** | PostgreSQL schema design, migrations, performance, security |
 
 ## Installation
 

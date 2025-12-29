@@ -1,3 +1,218 @@
+# Shell Utilities & Documentation Ingestion
+
+## Guiding Principle
+
+Choose the lightest tool that reliably produces the content you need in a machine-consumable form.
+
+- If the page is static HTML: prefer `curl` plus parsing (`jq` for JSON, HTML to text conversion, or a lightweight extractor).
+- If the page is JavaScript-rendered or requires interaction: use a headless browser (Playwright).
+- If Playwright is blocked or too heavy: try a doc-extraction proxy/cache (for example `https://context7.com/`) when it supports the target site.
+- If you need diagrams understood (not OCR): use a screenshot (Playwright) and a vision-capable model (VLM).
+- If you need text inside images: use OCR (Tesseract) as a supplement.
+- If you are reading official documentation at scale: prefer a documentation-aware retrieval system (RAG) over raw scraping.
+
+## Tool Selection Matrix
+
+### 1) Static pages, APIs, feeds
+
+Use these when content is already present in HTML or JSON without JS:
+
+- `curl` for fetching
+- `jq` for JSON shaping
+- `ripgrep` for local searching
+- `lynx -dump` for fast text extraction
+
+Examples:
+
+```bash
+# Fetch HTML
+curl -fsSL "https://acme.com/page" -o page.html
+
+# Fetch JSON and shape it
+curl -fsSL "https://api.acme.com/v1/items" | jq '.items[] | {id, name, updated_at}'
+
+# Extract readable text quickly
+lynx -dump -nolist "https://acme.com/page" > page.txt
+```
+
+When to stop here:
+
+- If the text is good enough for the agent to answer questions
+- If you do not need diagrams interpreted
+- If the page is not JS-rendered
+
+### 2) JS-heavy sites, auth flows, dynamic docs, robust extraction
+
+Use Playwright when `curl` or `lynx` fails to capture the real content.
+
+If Playwright fails (timeouts, bot protection, or brittle selectors) and you only need clean doc text, try a doc-extraction proxy/cache such as `https://context7.com/` (when it supports the target site).
+
+Playwright is the right default for:
+
+- SPA documentation sites
+- Pages that lazy-load content
+- Pages where you need to click "expand", "next", "load more"
+- You need stable screenshots of diagrams
+
+Operational guidance:
+
+- Run headless by default
+- Block heavy resources if you only need text (ads, video)
+- Capture both:
+  1. Extracted page text (DOM text)
+  2. Screenshot of key sections (for diagrams)
+
+### 3) Diagrams and visual reasoning
+
+If the requirement is "understand the diagram", OCR is not enough.
+
+Use:
+
+- Playwright screenshot of the diagram region
+- Vision-capable model (VLM) to interpret structure and meaning
+
+Guidance for diagram prompting:
+
+- Ask for components, flows, boundaries, assumptions
+- Ask for a structured representation (bullets, adjacency list, Mermaid)
+- Ask the model to cite what it sees in the image
+
+### 4) OCR for text inside images
+
+Use OCR only to extract text embedded in images, for example:
+
+- A screenshot of a config snippet inside a PNG
+- A diagram that has important labels but you only need the labels
+
+Tool: Tesseract (OCR)
+
+Guidance:
+
+- Prefer higher resolution images
+- Preprocess if needed (convert to grayscale, increase contrast)
+- Treat OCR output as noisy and validate against surrounding text
+
+### 5) Documentation retrieval systems (RAG-first)
+
+When the goal is "read AWS, Cloudflare, Kubernetes docs reliably at scale", prefer a doc-aware retrieval approach.
+
+Characteristics:
+
+- Ingest official docs (site map, versioned docs, markdown sources)
+- Chunk and index
+- Retrieve only relevant sections per question
+- Avoid scraping the same pages repeatedly
+
+This is especially useful for:
+
+- API references
+- Configuration options
+- Up-to-date product docs
+
+Note: doc-extraction proxy/caching services (for example `https://context7.com/`) can be a pragmatic alternative when browser automation is blocked or too expensive for the use case.
+
+## Quick Heuristics
+
+### Prefer `lynx -dump` when
+
+- You just need readable text quickly
+- You are validating a URL manually
+- You want a cheap baseline before heavier tooling
+
+### Prefer `curl` when
+
+- You need raw content for a parser
+- You want deterministic fetches
+- You are working with JSON endpoints
+
+### Prefer Playwright when
+
+- The site is JS-rendered
+- The HTML contains placeholders and the real text loads later
+- You need screenshots for diagrams
+- You need to click, scroll, or expand sections
+
+### Prefer Context7 (or similar) when
+
+- Playwright is blocked by bot protection or is too expensive for the task
+- You only need clean, readable documentation text (not interaction)
+- The target documentation source is supported by the retrieval/proxy system
+
+### Prefer VLM screenshot analysis when
+
+- "Understand the diagram" is a core requirement
+- The meaning is in arrows, layout, grouping, icons, or visual structure
+
+### Prefer OCR when
+
+- The only missing piece is text inside an image
+- You do not need structural understanding
+
+## Anti-patterns (what NOT to do)
+
+### Do not default to a headless browser for everything
+
+Headless browsers are heavier and slower. Use them when necessary.
+
+Bad:
+
+- Always use a browser to fetch a static blog post
+
+Good:
+
+- Try `lynx -dump` or `curl` first, then escalate to Playwright if needed
+
+### Do not paste entire pages into the LLM
+
+Instead:
+
+- Extract main content
+- Keep headings
+- Strip nav, footers, cookie banners
+- Chunk into reasonable sections
+
+### Do not scrape aggressively
+
+- Respect robots.txt and site policies
+- Add rate limiting
+- Cache responses
+
+## Common Commands Reference
+
+### lynx
+
+```bash
+lynx -dump -nolist "https://acme.com"
+lynx -source "https://acme.com" > page.html
+```
+
+### curl
+
+```bash
+curl -fsSL "https://acme.com" -o page.html
+curl -I "https://acme.com"
+```
+
+### jq
+
+```bash
+cat payload.json | jq '.'
+curl -fsSL "https://api.acme.com" | jq '.items[] | {id, name}'
+```
+
+### httpie
+
+```bash
+http GET "https://api.acme.com/v1/items"
+http GET "https://api.acme.com/v1/items" Authorization:"Bearer $TOKEN"
+```
+
+### ripgrep
+
+```bash
+rg -n "VPC Lattice|PrivateLink|Cloudflare Tunnel" docs/
+```
+
 # Shell Utilities
 
 ## curl
@@ -162,3 +377,43 @@ while IFS=',' read -r name email; do
 done < users.csv
 ```
 
+## fzf (fuzzy finder)
+
+Interactive fuzzy finder for command-line productivity:
+
+```bash
+# File search (Ctrl+T)
+# Type partial filename, fzf filters results as you type
+
+# Command history (Ctrl+R)
+# Search through shell history interactively
+
+# Directory navigation (Alt+C)
+# Change directory with fuzzy search
+
+# Git workflows
+git checkout $(git branch | fzf)        # Switch branches
+git log --oneline | fzf                 # Browse commits
+git diff $(git diff --name-only | fzf)  # View diff of selected file
+
+# Process management
+kill -9 $(ps aux | fzf | awk '{print $2}')  # Kill process interactively
+
+# Code search integration
+rg "pattern" | fzf  # Search code, then filter results
+```
+
+**Shell integration setup:**
+
+```bash
+# Install shell bindings (adds Ctrl+R, Ctrl+T, Alt+C)
+$(brew --prefix)/opt/fzf/install
+```
+
+**Use cases:**
+
+- Finding files quickly without typing full paths
+- Searching command history efficiently
+- Navigating large directory structures
+- Enhancing git workflows with interactive selection
+- Filtering command output interactively

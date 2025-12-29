@@ -1,5 +1,22 @@
 # Configuration Management
 
+## Configuration Precedence
+
+Configuration is applied in order, with later sources overriding earlier ones:
+
+1. **System configuration** (`/etc/gitconfig`, `/etc/app/config.yaml`)
+2. **User configuration** (`~/.gitconfig`, `~/.app/config.yaml`)
+3. **Local/project configuration** (`.git/config`, `./config.yaml`)
+4. **Environment variables** (`GIT_AUTHOR_NAME=...`, `APP_API_KEY=...`)
+5. **Command-line parameters** (`git commit --author=...`, `app --api-key=...`)
+
+This pattern is used by Git, SSH, and many Unix tools. Use this hierarchy to allow:
+- System defaults
+- User preferences
+- Project settings
+- Runtime environment overrides
+- Explicit command-line overrides
+
 ## 12-Factor App Principles
 
 1. **Codebase**: One codebase, many deploys
@@ -16,6 +33,77 @@
 12. **Admin processes**: Run as one-off processes
 
 ## Environment Variables
+
+### String Type
+
+Environment variables are **strings** in the OS. Convert them in your application:
+
+```python
+# GOOD: Explicit conversion
+port = int(os.getenv("PORT", "8080"))
+timeout = float(os.getenv("TIMEOUT", "30.0"))
+debug = os.getenv("DEBUG") == "1"
+
+# BAD: Assuming type
+port = os.getenv("PORT", 8080)  # Wrong! Default should be string
+```
+
+### Boolean Values
+
+**Use `1` for true. Anything that is not `1` is false.**
+
+```python
+# GOOD: Consistent boolean handling
+debug = os.getenv("DEBUG") == "1"
+verbose = os.getenv("VERBOSE") == "1"
+enabled = os.getenv("FEATURE_ENABLED") == "1"
+
+# BAD: Parsing various strings
+debug = os.getenv("DEBUG", "false").lower() in ["true", "1", "yes", "on"]
+# This is brittle and opinionated
+```
+
+**Rationale:**
+- Simple and unambiguous
+- Works across all languages
+- No parsing ambiguity
+- Consistent with Unix conventions
+
+### Required Values
+
+**Fail fast if required configuration is missing:**
+
+```python
+# GOOD: Fail fast with clear error
+api_key = os.getenv("API_KEY")
+if not api_key:
+    raise ValueError(
+        "API_KEY environment variable is required. "
+        "Set it with: export API_KEY=your-key"
+    )
+
+# BAD: Silent failure or default
+api_key = os.getenv("API_KEY", "")  # What if empty string?
+# Later: api_key is empty, fails mysteriously
+```
+
+### Default Values
+
+Provide sensible defaults when appropriate:
+
+```python
+# GOOD: Sensible defaults
+port = int(os.getenv("PORT", "8080"))
+log_level = os.getenv("LOG_LEVEL", "INFO")
+timeout = int(os.getenv("TIMEOUT", "30"))
+
+# GOOD: No default for required values
+api_key = os.getenv("API_KEY")
+if not api_key:
+    raise ValueError("API_KEY is required")
+```
+
+### Bash Examples
 
 ```bash
 # Load from .env file
