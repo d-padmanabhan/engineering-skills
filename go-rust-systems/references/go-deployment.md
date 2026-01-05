@@ -20,6 +20,52 @@ go build -ldflags "-s -w" -o myapp ./cmd/myapp
 # -w: omit DWARF symbol table
 ```
 
+## Hot Reload (Air) for Local Dev
+
+Use **Air** to rebuild/restart on file changes during local development. This is a **developer convenience**, not a production or CI tool.
+
+**Install (macOS):**
+
+```bash
+brew install air
+```
+
+**Install (Go toolchain, portable):**
+
+```bash
+go install github.com/air-verse/air@latest
+```
+
+**Initialize config (recommended):**
+
+```bash
+air init
+```
+
+**Run:**
+
+```bash
+air
+# or:
+air -c .air.toml
+```
+
+**Keep build output out of git:**
+- Add `tmp/` (or whatever Air uses) to `.gitignore`
+
+Minimal example `.air.toml` (adjust paths to your app layout; `air init` will generate a version-correct baseline):
+
+```toml
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/app ./cmd/server"
+bin = "tmp/app"
+include_ext = ["go"]
+exclude_dir = ["tmp", "vendor", ".git"]
+```
+
 ## Docker Multi-Stage Build
 
 ```dockerfile
