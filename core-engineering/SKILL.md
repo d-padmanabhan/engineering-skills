@@ -71,6 +71,7 @@ For detailed generation patterns, see [references/code-generation.md](references
 Adding a dependency is a long-term commitment. **Prefer stdlib or existing dependencies.**
 
 Vetting criteria for new dependencies:
+
 - [ ] **Justification:** Truly necessary? Solves complex problem?
 - [ ] **Maintenance:** Actively maintained? Recent commits?
 - [ ] **Security:** Audited? Known CVEs?
@@ -80,6 +81,7 @@ Vetting criteria for new dependencies:
 ## Self-Validation Checklist
 
 Before delivering code or feedback:
+
 - [ ] Addresses the actual problem
 - [ ] Simplest viable solution
 - [ ] No new bugs introduced
@@ -113,4 +115,3 @@ For commit message standards, branch naming, PR hygiene, and repository scaffold
 | Docker | Multi-stage builds, non-root user, pinned versions |
 
 > "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away." — Antoine de Saint-Exupéry
-

@@ -1,0 +1,71 @@
+---
+# Pre-commit hooks configuration
+# Install: pre-commit install
+# Update: pre-commit autoupdate
+# Run manually: pre-commit run --all-files
+
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        exclude: '\.md$'  # Preserve trailing spaces in Markdown
+
+      - id: end-of-file-fixer
+        name: Fix end of files
+
+      - id: check-yaml
+        name: Check YAML syntax
+
+      - id: check-added-large-files
+        name: Check for large files
+        args: ['--maxkb=1000']
+
+      - id: mixed-line-ending
+        name: Fix mixed line endings
+        args: ['--fix=lf']
+
+      - id: check-case-conflict
+        name: Check for case conflicts
+
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+
+      - id: detect-private-key
+        name: Detect private keys
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.47.0
+    hooks:
+      - id: markdownlint
+        name: Lint Markdown files
+        args: ['--fix', '--config', '.markdownlint.yaml']
+
+  # Link checking (manual - can be slow/flaky depending on network)
+  - repo: https://github.com/lycheeverse/lychee
+    rev: nightly
+    hooks:
+      - id: lychee
+        name: Lychee (link checker)
+        stages: [manual]
+        files: '\.(md)$'
+        args:
+          - --no-progress
+          - --max-retries
+          - '2'
+          - --timeout
+          - '20'
+
+# Optional: Configure which files to include/exclude
+# files: ''
+# exclude: ''
+
+# Optional: Fail fast - stop on first error
+fail_fast: false
+
+# Optional: Default language version
+default_language_version:
+  python: python3

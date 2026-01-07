@@ -21,6 +21,7 @@ def complex_function(data: list[dict]) -> dict:
 ```
 
 **pdb Commands:**
+
 - `n` (next): Execute next line
 - `s` (step): Step into function calls
 - `c` (continue): Continue execution

@@ -169,4 +169,3 @@ trivy image myimage:latest
 # Lint Dockerfile
 hadolint Dockerfile
 ```
-

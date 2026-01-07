@@ -167,4 +167,3 @@ def test_sorted_output_has_same_length(items):
     result = sort(items)
     assert len(result) == len(items)
 ```
-

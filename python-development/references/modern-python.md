@@ -3,6 +3,7 @@
 ## Core Language Features
 
 ### f-strings
+
 ```python
 name = "Alice"
 print(f"User: {name}")
@@ -10,6 +11,7 @@ print(f"{name!r}")  # Python 3.12: debug repr
 ```
 
 ### match-case (Python 3.10+)
+
 ```python
 def handle_response(code: int) -> str:
     match code:
@@ -19,12 +21,14 @@ def handle_response(code: int) -> str:
 ```
 
 ### Walrus Operator (:=)
+
 ```python
 if (count := len(items)) > 5:
     print(f"Processing {count} items")
 ```
 
 ### Comprehensions
+
 ```python
 # List comprehension
 doubled = [x * 2 for x in numbers]
@@ -56,6 +60,7 @@ class ImmutableConfig:
 ## Functional Programming
 
 ### functools.cache
+
 ```python
 from functools import cache
 
@@ -65,6 +70,7 @@ def expensive_calculation(n: int) -> int:
 ```
 
 ### functools.partial
+
 ```python
 from functools import partial
 
@@ -75,6 +81,7 @@ double = partial(multiply, 2)
 ```
 
 ### functools.singledispatch
+
 ```python
 from functools import singledispatch
 
@@ -166,6 +173,7 @@ class FileWriter(DataWriter):
 ## Design Patterns
 
 ### Factory Pattern
+
 ```python
 class DatabaseFactory:
     @staticmethod
@@ -177,6 +185,7 @@ class DatabaseFactory:
 ```
 
 ### Singleton Pattern
+
 ```python
 class SingletonMeta(type):
     _instances: dict[type, object] = {}
@@ -192,6 +201,7 @@ class ConfigManager(metaclass=SingletonMeta):
 ```
 
 ### Strategy Pattern
+
 ```python
 from typing import Protocol
 
@@ -234,4 +244,3 @@ from datetime import datetime, timezone
 # Always use UTC-aware timestamps
 timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 ```
-

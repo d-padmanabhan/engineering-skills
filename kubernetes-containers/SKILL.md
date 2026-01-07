@@ -115,6 +115,7 @@ spec:
 | Memory | Guaranteed minimum | OOMKilled above |
 
 Always set both requests and limits:
+
 ```yaml
 resources:
   requests:
@@ -165,4 +166,3 @@ helm diff upgrade my-app ./chart
 
 - **Kubernetes Patterns**: See [references/kubernetes-patterns.md](references/kubernetes-patterns.md)
 - **Helm Charts**: See [references/helm-charts.md](references/helm-charts.md)
-

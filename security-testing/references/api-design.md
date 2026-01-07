@@ -3,6 +3,7 @@
 ## REST Best Practices
 
 ### Resource Naming
+
 ```
 GET    /users           # List users
 POST   /users           # Create user
@@ -17,6 +18,7 @@ POST   /users/{id}/orders
 ```
 
 ### HTTP Status Codes
+
 | Code | Meaning | Use When |
 |------|---------|----------|
 | 200 | OK | Successful GET, PUT, PATCH |
@@ -32,6 +34,7 @@ POST   /users/{id}/orders
 | 500 | Server Error | Internal error |
 
 ### Response Format
+
 ```json
 {
   "data": {
@@ -171,4 +174,3 @@ components:
           type: string
           format: email
 ```
-

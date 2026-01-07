@@ -16,6 +16,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Completely missing
 
 **What cursor-engineering-rules has:**
+
 - `/init` - Initialize task, detect complexity
 - `/plan` - Design solution, document approach
 - `/creative` - Explore design options
@@ -28,6 +29,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 - `/archive` - Document lessons learned
 
 **Why it matters:**
+
 - **Structured workflow** - Forces proper planning before implementation
 - **Quality gates** - QA validation prevents implementation failures
 - **Review automation** - `/self-review` and `/quick-review` provide automated code review
@@ -36,7 +38,8 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 
 **Impact:** Without these commands, Claude agents lack structured workflow guidance and automated review capabilities.
 
-**Recommendation:** 
+**Recommendation:**
+
 - Add workflow command patterns as reference examples in `agent-workflow/references/workflow-commands.md`
 - Document how to trigger similar behaviors in Claude Code (even if not exact `/command` syntax)
 - Include command templates that can be adapted for Claude's interaction model
@@ -48,6 +51,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Missing
 
 **What cursor-engineering-rules has:**
+
 - `tasks.md.template` - Task tracking and planning
 - `active-context.md.template` - Current focus documentation
 - `progress.md.template` - Implementation status tracking
@@ -56,6 +60,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 - `reflect-template.md.template` - Post-implementation review
 
 **Why it matters:**
+
 - **Persistent context** - Helps maintain context across sessions
 - **Task organization** - Structured way to track complex work
 - **Knowledge capture** - Templates ensure important information is documented
@@ -64,6 +69,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Impact:** Without templates, agents may not maintain context effectively or document decisions properly.
 
 **Recommendation:**
+
 - Add templates to `agent-workflow/references/context-templates.md`
 - Include examples of how to use each template
 - Document when to use each template type
@@ -75,12 +81,14 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Missing
 
 **What cursor-engineering-rules has:**
+
 - `mcp/cursor-rules-mcp/` - TypeScript MCP server
 - On-demand rule loading via tool calls
 - Just-in-time rule loading
 - Rule fetching by category/topic
 
 **Why it matters:**
+
 - **Dynamic loading** - Load only needed rules, not all rules
 - **Tool integration** - Can be called programmatically
 - **Efficiency** - Reduces context token usage
@@ -88,6 +96,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Impact:** Without MCP server, all skills load at once (if configured), increasing token usage.
 
 **Recommendation:**
+
 - Consider creating MCP server for Claude Skills (if MCP supports Skills API)
 - Document MCP integration patterns in `mcp-development/references/`
 
@@ -98,11 +107,13 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Missing
 
 **What cursor-engineering-rules has:**
+
 - `setup-workspace.sh` - Bootstrap workspace with rules
 - `setup-all-repos.sh` - Setup multiple repos
 - `scripts/cursor-maintenance.sh` - Clean cache, logs, temp files
 
 **Why it matters:**
+
 - **Onboarding** - Makes it easy to adopt the skills
 - **Maintenance** - Helps keep environments clean
 - **Automation** - Reduces manual setup work
@@ -110,6 +121,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Impact:** Without scripts, users must manually set up skills and maintain environments.
 
 **Recommendation:**
+
 - Add setup scripts for Claude Skills installation
 - Create maintenance scripts for Claude Code cache/log cleanup
 - Document in README
@@ -121,16 +133,19 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Missing
 
 **What cursor-engineering-rules has:**
+
 - `.cursorrules-example` - Example Cursor configuration
 - `examples/mcp/` - MCP server configuration examples
 
 **Why it matters:**
+
 - **Quick start** - Users can copy examples to get started
 - **Best practices** - Shows recommended configurations
 
 **Impact:** Without examples, users must create configurations from scratch.
 
 **Recommendation:**
+
 - Add example Claude Skills configurations
 - Include example `.claude/skills/` directory structure
 
@@ -143,6 +158,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** ~86% covered (748 lines vs 872 lines)
 
 **Missing from `core-engineering/references/git-*.md`:**
+
 - Some advanced reflog patterns
 - Git worktrees documentation (Phantom tool integration)
 - Additional pre-commit hook examples
@@ -156,6 +172,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Partial coverage
 
 **Missing from `infrastructure-iac/references/configuration.md`:**
+
 - Configuration precedence hierarchy details
 - Environment variable type conversion patterns
 - Boolean value handling (`1` for true)
@@ -171,6 +188,7 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 **Status:** Partial coverage
 
 **Missing from `bash-shell-scripting/references/shell-utilities.md`:**
+
 - Documentation ingestion tool selection matrix
 - Progressive escalation strategy (curl → lynx → Playwright → Context7 → VLM → OCR)
 - Advanced `fd` and `fzf` usage examples
@@ -202,18 +220,21 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 ### Commands vs Skills
 
 **cursor-engineering-rules:**
+
 - Uses **commands** (`/plan`, `/build`, etc.) for explicit workflow control
 - Commands trigger specific behaviors and phase transitions
 - Commands are Cursor IDE-specific
 
 **claude-engineering-skills:**
+
 - Uses **skills** that auto-trigger based on content
 - No explicit command system (Claude Skills don't support `/command` syntax)
 - Skills are Claude-specific
 
 **Gap:** Claude Skills lack explicit workflow control mechanisms. Agents must infer workflow phases from context.
 
-**Recommendation:** 
+**Recommendation:**
+
 - Document workflow patterns in `agent-workflow/SKILL.md`
 - Include examples of how to trigger workflow phases through natural language
 - Consider adding workflow state tracking patterns
@@ -241,27 +262,27 @@ While `claude-engineering-skills` covers most core engineering domains, it's mis
 
 ### 🟡 Medium Priority
 
-4. **Expand Command-Line Utilities**
+1. **Expand Command-Line Utilities**
    - Add documentation ingestion patterns
    - Add tool selection matrix
    - Add progressive escalation strategy
 
-5. **Add Setup Scripts**
+2. **Add Setup Scripts**
    - Create `setup-claude-skills.sh`
    - Create maintenance scripts
    - Document in README
 
-6. **Verify Makefile/Open Source Coverage**
+3. **Verify Makefile/Open Source Coverage**
    - Compare against source rules
    - Fill any gaps
 
 ### 🟢 Low Priority
 
-7. **Add Examples Directory**
+1. **Add Examples Directory**
    - Example Claude Skills configurations
    - Example `.claude/skills/` structure
 
-8. **Consider MCP Server**
+2. **Consider MCP Server**
    - Evaluate if MCP supports Skills API
    - Document integration patterns if applicable
 

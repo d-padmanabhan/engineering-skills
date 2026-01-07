@@ -71,6 +71,7 @@ await server.connect(transport);
 ## Tool Design Best Practices
 
 ### Clear Descriptions
+
 ```typescript
 {
   name: "search_documents",
@@ -94,6 +95,7 @@ await server.connect(transport);
 ```
 
 ### Error Handling
+
 ```typescript
 server.setRequestHandler("tools/call", async (request) => {
   try {
@@ -158,4 +160,3 @@ server.setRequestHandler("resources/read", async (request) => {
 
 - **MCP Patterns**: See [references/mcp-patterns.md](references/mcp-patterns.md)
 - **AI/ML Integration**: See [references/ai-ml-integration.md](references/ai-ml-integration.md)
-

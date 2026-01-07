@@ -198,4 +198,3 @@ ansible-playbook --syntax-check playbooks/deploy.yml
 # Dry run
 ansible-playbook playbooks/deploy.yml --check --diff
 ```
-

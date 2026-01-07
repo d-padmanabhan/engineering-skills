@@ -24,6 +24,7 @@ While Claude Skills don't support explicit `/command` syntax like Cursor IDE, th
 **Purpose:** Analyze project, detect complexity, set up context
 
 **When to Use:**
+
 - Starting new work
 - Need to understand project structure
 - Determining appropriate workflow
@@ -96,6 +97,7 @@ Proceed to Planning phase (or Build for Level 1 tasks).
 **Purpose:** Design solution, document approach before implementation
 
 **When to Use:**
+
 - Level 2+ tasks
 - Need to design solution
 - Multiple approaches possible
@@ -167,6 +169,7 @@ Proceed to Planning phase (or Build for Level 1 tasks).
 ```
 
 **Rules:**
+
 - Ask max 3 clarifying questions if scope is ambiguous
 - Do NOT start coding until user approves
 - Keep plans concise but complete
@@ -179,6 +182,7 @@ Proceed to Planning phase (or Build for Level 1 tasks).
 **Purpose:** Explore design options for complex tasks requiring design decisions
 
 **When to Use:**
+
 - Level 3-4 tasks
 - Multiple valid approaches exist
 - Design decisions affect multiple components
@@ -266,6 +270,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 **Purpose:** Technical validation to prevent implementation failures
 
 **When to Use:**
+
 - Mandatory before Implementation for Level 2+ tasks
 - Can be called explicitly
 - After Creative Phase completion (Level 3-4)
@@ -275,11 +280,13 @@ Implementation CANNOT proceed until all creative phases are completed.
 ### 1. Dependency Verification
 
 **Check:**
+
 - All required packages/tools installed
 - Versions compatible with requirements
 - No missing dependencies
 
 **Process:**
+
 ```bash
 # Example checks:
 - Check package.json / requirements.txt / pyproject.toml
@@ -289,6 +296,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 ```
 
 **Output:**
+
 - List of required dependencies
 - List of installed dependencies
 - Compatibility status
@@ -297,12 +305,14 @@ Implementation CANNOT proceed until all creative phases are completed.
 ### 2. Configuration Validation
 
 **Check:**
+
 - Configuration files exist and are valid
 - Syntax is correct (JSON, YAML, TOML, etc.)
 - Platform compatibility (Windows/macOS/Linux)
 - Required settings present
 
 **Process:**
+
 ```bash
 # Example checks:
 - Validate JSON/YAML/TOML syntax
@@ -312,6 +322,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 ```
 
 **Output:**
+
 - Configuration files checked
 - Syntax validation status
 - Platform compatibility status
@@ -320,12 +331,14 @@ Implementation CANNOT proceed until all creative phases are completed.
 ### 3. Environment Validation
 
 **Check:**
+
 - Build tools available (npm, pip, make, etc.)
 - Permissions sufficient (write access, port availability)
 - Environment variables set (if needed)
 - Required ports available
 
 **Process:**
+
 ```bash
 # Example checks:
 - Verify build tools installed (node, python, git, etc.)
@@ -335,6 +348,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 ```
 
 **Output:**
+
 - Build tools status
 - Permission status
 - Environment readiness
@@ -343,11 +357,13 @@ Implementation CANNOT proceed until all creative phases are completed.
 ### 4. Minimal Build Test
 
 **Check:**
+
 - Build process works
 - Core functionality testable
 - No blocking errors
 
 **Process:**
+
 ```bash
 # Example checks:
 - Run minimal build/test command
@@ -357,6 +373,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 ```
 
 **Output:**
+
 - Build process status
 - Functionality test status
 - Errors found (if any)
@@ -364,6 +381,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 ### QA Validation Report Format
 
 **Success Report:**
+
 ```
 ✅ QA VALIDATION STATUS
 ✓ Dependencies        All required packages installed
@@ -375,6 +393,7 @@ Implementation CANNOT proceed until all creative phases are completed.
 ```
 
 **Failure Report:**
+
 ```
 ❌ QA VALIDATION FAILED
 
@@ -406,6 +425,7 @@ The following issues must be resolved before proceeding:
 **Purpose:** Write code following approved plan
 
 **When to Use:**
+
 - After plan is approved
 - After QA validation passes (Level 2+)
 - After Creative Phase completes (Level 3-4)
@@ -413,6 +433,7 @@ The following issues must be resolved before proceeding:
 **Implementation Gate Checks:**
 
 **You MUST NOT start implementation until:**
+
 - [ ] Explicit user approval received in Planning phase
 - [ ] QA Validation passed (for Level 2+ tasks)
 - [ ] Creative Phase completed (for Level 3-4 tasks)
@@ -427,6 +448,7 @@ The following issues must be resolved before proceeding:
 5. **Complete the agreed scope** - Then STOP and wait for review
 
 **Constraints:**
+
 - Implement only what was planned
 - Follow all coding standards
 - Include error handling, logging, and security considerations
@@ -435,6 +457,7 @@ The following issues must be resolved before proceeding:
 - Don't optimize prematurely
 
 **If you encounter issues:**
+
 - Trivial fixes (typos, obvious bugs): OK to fix immediately
 - Substantial changes needed: STOP, document in Review phase, discuss in next Planning phase
 
@@ -445,6 +468,7 @@ The following issues must be resolved before proceeding:
 **Purpose:** Verify implementation, suggest improvements
 
 **When to Use:**
+
 - After implementation is complete
 - Before committing changes
 - Before creating PR
@@ -459,6 +483,7 @@ The following issues must be resolved before proceeding:
 6. **Propose next steps** - What should happen next?
 
 **Review Checklist:**
+
 - [ ] Changes match the agreed plan
 - [ ] Security considerations addressed
 - [ ] Error handling appropriate
@@ -515,6 +540,7 @@ The following issues must be resolved before proceeding:
 **Purpose:** Full code review comparing branch to main - PR-ready analysis
 
 **When to Use:**
+
 - Before creating PR
 - Need comprehensive analysis
 - Want full audit trail
@@ -545,6 +571,7 @@ The following issues must be resolved before proceeding:
 Run appropriate linters and analyzers based on project language:
 
 **Python:**
+
 - `ruff check .` (linting)
 - `ruff format --check .` (format check)
 - `mypy .` or `ty .` (type checking)
@@ -553,25 +580,30 @@ Run appropriate linters and analyzers based on project language:
 - `pip-audit` (dependency vulnerabilities)
 
 **Bash/Shell:**
+
 - `shellcheck` on all `.sh` files
 - `shfmt -d .` (format check)
 
 **Go:**
+
 - `gofmt -d .` (format check)
 - `golangci-lint run`
 - `govulncheck ./...`
 
 **JavaScript/TypeScript:**
+
 - `eslint . --max-warnings=0`
 - `npm audit` (if `package.json` exists)
 - `tsc --noEmit` (if TypeScript)
 
 **Terraform:**
+
 - `terraform fmt -check -recursive`
 - `terraform validate`
 - `tflint`
 
 **General:**
+
 - `pre-commit run --all-files` (if configured)
 - `gitleaks detect --source .` (secrets scanning)
 
@@ -582,22 +614,26 @@ Report all findings with file/line references.
 Analyze `git diff main...HEAD` focusing on:
 
 **Critical Issues (Must Fix)**
+
 - Security vulnerabilities: Hardcoded secrets, injection risks, OWASP Top 10 violations
 - Bugs: Logic errors, null pointer risks, data loss scenarios
 - Breaking changes: API modifications without migration path
 
 **Recommended Improvements**
+
 - Performance: Inefficient algorithms, N+1 queries, missing caching
 - Maintainability: Code duplication, unclear naming, missing error handling
 - Observability: Missing logging, no metrics, poor error messages
 
 **Optional Enhancements**
+
 - Style: Formatting inconsistencies, minor naming improvements
 - Documentation: Missing docstrings, unclear comments
 
 ### Phase 4: Security Review
 
 **OWASP Top 10 Checks:**
+
 - A01: Broken Access Control
 - A02: Cryptographic Failures
 - A03: Injection
@@ -610,6 +646,7 @@ Analyze `git diff main...HEAD` focusing on:
 - A10: SSRF
 
 **Secrets Scanning:**
+
 - Check for hardcoded credentials
 - Verify secrets are not logged
 - Check for exposed API keys
@@ -617,6 +654,7 @@ Analyze `git diff main...HEAD` focusing on:
 ### Phase 5: Automated Fixes (Optional)
 
 If user approves:
+
 - Apply formatters (`ruff format`, `black`, `gofmt`, etc.)
 - Re-stage formatted files
 - Report what was fixed
@@ -660,6 +698,7 @@ Generate PR-ready report:
 **Purpose:** Streamlined review for rapid iteration
 
 **When to Use:**
+
 - Pre-commit validation
 - Rapid development cycles
 - Small changes
@@ -701,6 +740,7 @@ Generate PR-ready report:
 **Purpose:** Review work progress without staging/committing
 
 **When to Use:**
+
 - Want to see what's been done
 - Need commit message suggestions
 - Checking status before committing
@@ -743,6 +783,7 @@ Generate PR-ready report:
 
 ### Proposed Commit Message
 ```
+
 <type>(<scope>): <short summary>
 
 - <change 1>
@@ -753,7 +794,9 @@ Generate PR-ready report:
 ```
 
 ### Issues Found
+
 - [Critical/Recommended/Optional issues]
+
 ```
 
 ---
@@ -794,17 +837,23 @@ See Review phase output format - Archive uses similar structure but focuses on k
 
 ### For Simple Tasks (Level 1)
 ```
+
 Init → Build → Review
+
 ```
 
 ### For Moderate Tasks (Level 2)
 ```
+
 Init → Plan → QA → Build → Review
+
 ```
 
 ### For Complex Tasks (Level 3-4)
 ```
+
 Init → Plan → Creative → QA → Build → Review → Archive
+
 ```
 
 ---

@@ -159,4 +159,3 @@ resource "google_secret_manager_secret_iam_member" "app_access" {
   member    = "serviceAccount:${google_service_account.app.email}"
 }
 ```
-

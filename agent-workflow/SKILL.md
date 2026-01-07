@@ -31,6 +31,7 @@ AI: "Let me design a solution first. Key decisions needed:
 ```
 
 **Why This Matters:**
+
 - Skipping planning → Wasted time, wrong solutions, scope creep
 - Implementing unplanned features → Breaking existing code, technical debt
 - Not stopping after agreed scope → Confusion, frustration, rework
@@ -47,17 +48,20 @@ AI: "Let me design a solution first. Key decisions needed:
 ## Phase 1: Planning
 
 **You MUST NOT begin implementation until:**
+
 - [ ] User has explicitly approved the plan
 - [ ] All clarifying questions have been answered
 - [ ] The scope is clearly defined and agreed upon
 
 **Process:**
+
 1. Analyze the request - understand scope, constraints, requirements
 2. Check existing code - look for patterns and reusable components
 3. Design the solution - propose approach with alternatives
 4. **WAIT FOR APPROVAL** - present plan and await confirmation
 
 **Key Questions:**
+
 - What is the simplest solution that meets requirements?
 - Can we reuse existing code or patterns?
 - What are the security implications?
@@ -66,11 +70,13 @@ AI: "Let me design a solution first. Key decisions needed:
 ## Phase 2: Implementation
 
 **Implementation Gate Checks:**
+
 - [ ] Explicit user approval received
 - [ ] QA Validation passed (Level 2+ tasks)
 - [ ] Creative Phase completed (Level 3-4 tasks)
 
 **Constraints:**
+
 - Implement only what was planned
 - Make incremental changes
 - Don't refactor unrelated code
@@ -79,6 +85,7 @@ AI: "Let me design a solution first. Key decisions needed:
 ## Phase 3: Review
 
 **Process:**
+
 1. Review implemented changes - verify they match the plan
 2. Check for issues - security, bugs, edge cases
 3. Suggest improvements - but DON'T implement them yet
@@ -98,4 +105,3 @@ AI: "Let me design a solution first. Key decisions needed:
 For audit requirements including no remote writes, checkpoint management, and audit reports, see [references/audit-requirements.md](references/audit-requirements.md).
 
 For detailed context management and QA validation, see [references/context-management.md](references/context-management.md).
-

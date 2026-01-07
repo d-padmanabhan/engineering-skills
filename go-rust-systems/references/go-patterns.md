@@ -31,6 +31,7 @@ result, err := fetchData(ctx)
 ## Concurrency
 
 **Proverbs**:
+
 - "Don't communicate by sharing memory, share memory by communicating"
 - "Channels orchestrate; mutexes serialize"
 - "Concurrency is not parallelism"
@@ -458,4 +459,3 @@ linters-settings:
 issues:
   exclude-use-default: false
 ```
-

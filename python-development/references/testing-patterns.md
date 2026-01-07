@@ -166,4 +166,3 @@ def test_sorted_list_is_sorted(xs: list[int]):
     result = sorted(xs)
     assert all(result[i] <= result[i+1] for i in range(len(result)-1))
 ```
-

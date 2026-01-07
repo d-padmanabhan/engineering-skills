@@ -33,18 +33,21 @@ git switch main
 ## `git restore` Examples
 
 **Restore file from index (unstage):**
+
 ```bash
 git restore --staged file.py    # Unstage file
 git restore file.py              # Discard changes in working directory
 ```
 
 **Restore file from specific commit:**
+
 ```bash
 git restore -s HEAD~1 file.py    # Restore from previous commit
 git restore -s abc1234 file.py    # Restore from specific commit
 ```
 
 **Restore multiple files:**
+
 ```bash
 git restore --staged *.py        # Unstage all Python files
 git restore src/                  # Discard all changes in src/
@@ -58,6 +61,7 @@ git restore src/                  # Discard all changes in src/
 | `git mv old new` | Move + stage in one step | Git tracks as rename |
 
 **Using `mv` (three commands):**
+
 ```bash
 mv src/utils.js src/helpers.js
 git add src/helpers.js
@@ -65,6 +69,7 @@ git rm src/utils.js
 ```
 
 **Using `git mv` (one command):**
+
 ```bash
 git mv src/utils.js src/helpers.js
 ```
@@ -101,6 +106,7 @@ git worktree remove ../myproject-feature-auth
 **Phantom** simplifies Git worktree management with intuitive commands and AI agent integration.
 
 **Installation:**
+
 ```bash
 brew install phantom
 # or
@@ -108,6 +114,7 @@ npm install -g @aku11i/phantom
 ```
 
 **Basic Usage:**
+
 ```bash
 # Create a worktree for a new feature
 phantom create feature-auth
@@ -129,6 +136,7 @@ phantom delete feature-auth
 ```
 
 **GitHub Integration:**
+
 ```bash
 # Create worktree from PR
 phantom create --pr 123

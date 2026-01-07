@@ -3,6 +3,7 @@
 ## Workers
 
 ### Basic Worker
+
 ```javascript
 export default {
   async fetch(request, env, ctx) {
@@ -41,6 +42,7 @@ async function handleData(request, env) {
 ```
 
 ### Worker with Durable Objects
+
 ```javascript
 export class Counter {
   constructor(state, env) {
@@ -71,6 +73,7 @@ export default {
 ## Pages
 
 ### Configuration (wrangler.toml)
+
 ```toml
 name = "my-app"
 compatibility_date = "2024-01-01"
@@ -92,6 +95,7 @@ ENVIRONMENT = "production"
 ```
 
 ### Functions (Pages Functions)
+
 ```javascript
 // functions/api/users.js
 export async function onRequestGet(context) {
@@ -188,4 +192,3 @@ const user = await env.KV.get('user:123', 'json');
 // Delete
 await env.KV.delete('key');
 ```
-

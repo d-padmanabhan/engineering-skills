@@ -51,6 +51,7 @@ air -c .air.toml
 ```
 
 **Keep build output out of git:**
+
 - Add `tmp/` (or whatever Air uses) to `.gitignore`
 
 Minimal example `.air.toml` (adjust paths to your app layout; `air init` will generate a version-correct baseline):

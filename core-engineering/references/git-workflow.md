@@ -43,6 +43,7 @@ Improves upgrade experience by making common path primary.
 | **revert** | Revert a previous commit |
 
 **Breaking Changes** require: `feat(api)!: ...` + footer:
+
 ```
 BREAKING CHANGE: renamed output vpc_id to lattice_vpc_id
 ```
@@ -50,6 +51,7 @@ BREAKING CHANGE: renamed output vpc_id to lattice_vpc_id
 ## Scopes
 
 Use a concise noun oriented around the domain:
+
 - `terraform`, `aws`, `gha`, `cli`, `docs`, `security`
 - `module/<name>` for specific modules
 - Jira ticket as scope (`PROJ-1234`) when applicable
@@ -61,6 +63,7 @@ Use a concise noun oriented around the domain:
 ```
 
 Examples:
+
 ```
 feat/terraform-lattice-issue-421
 fix/gha-permissions-pr-comment
@@ -77,11 +80,13 @@ docs/upgrade-guide-3-8
 ## Pull Request Standards
 
 **PR Title** mirrors commit header:
+
 ```
 <type>(<scope>): <concise summary>
 ```
 
 **Body** must include:
+
 - **What & Why**
 - **Risk / Impact** (breaking changes, migrations)
 - **Tests** (added/updated + any manual validation)
@@ -93,6 +98,7 @@ docs/upgrade-guide-3-8
 AI agents must **NEVER** commit code without explicit user approval.
 
 Before executing any `git commit`:
+
 1. Show the complete commit message in a formatted preview
 2. Display files to be committed
 3. Ask for explicit confirmation
@@ -133,8 +139,8 @@ Every repo must contain:
 ## Additional Git Resources
 
 For comprehensive Git guidance, see:
+
 - [git-fundamentals.md](git-fundamentals.md) - Refs, three-tier model, fetch vs pull, feature branch workflow
 - [git-reflog.md](git-reflog.md) - Reflog patterns, recovery workflows, Git's safety net
 - [git-modern-commands.md](git-modern-commands.md) - Modern Git commands (switch, restore, mv), worktrees
 - [git-pre-commit.md](git-pre-commit.md) - Pre-commit hooks setup and configuration
-

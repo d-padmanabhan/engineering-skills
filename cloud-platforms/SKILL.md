@@ -25,6 +25,7 @@ description: Cloud platform best practices for AWS, Azure, GCP, and Cloudflare. 
 ## AWS Quick Reference
 
 ### IAM Best Practices
+
 ```hcl
 # EKS Pod Identity (Recommended over IRSA)
 resource "aws_eks_pod_identity_association" "app" {
@@ -36,6 +37,7 @@ resource "aws_eks_pod_identity_association" "app" {
 ```
 
 ### VPC Pattern
+
 ```hcl
 # Private subnets only - Zero Trust
 resource "aws_subnet" "private" {
@@ -52,6 +54,7 @@ resource "aws_subnet" "private" {
 ```
 
 ### Essential Services
+
 - **EKS**: Managed Kubernetes
 - **Lambda**: Serverless compute
 - **RDS/Aurora**: Managed databases
@@ -62,6 +65,7 @@ resource "aws_subnet" "private" {
 ## Azure Quick Reference
 
 ### Managed Identity
+
 ```hcl
 resource "azurerm_user_assigned_identity" "app" {
   name                = "app-identity"
@@ -71,6 +75,7 @@ resource "azurerm_user_assigned_identity" "app" {
 ```
 
 ### Essential Services
+
 - **AKS**: Managed Kubernetes
 - **Azure Functions**: Serverless
 - **Azure SQL**: Managed databases
@@ -81,6 +86,7 @@ resource "azurerm_user_assigned_identity" "app" {
 ## GCP Quick Reference
 
 ### Workload Identity
+
 ```hcl
 resource "google_service_account" "app" {
   account_id   = "app-sa"
@@ -95,6 +101,7 @@ resource "google_project_iam_member" "app" {
 ```
 
 ### Essential Services
+
 - **GKE**: Managed Kubernetes
 - **Cloud Functions**: Serverless
 - **Cloud SQL**: Managed databases
@@ -105,6 +112,7 @@ resource "google_project_iam_member" "app" {
 ## Cloudflare Quick Reference
 
 ### Workers
+
 ```javascript
 export default {
   async fetch(request, env) {
@@ -123,6 +131,7 @@ export default {
 ```
 
 ### Essential Services
+
 - **Workers**: Edge compute
 - **Pages**: Static site hosting
 - **D1**: SQLite database
@@ -145,4 +154,3 @@ export default {
 - **Azure**: See [references/azure.md](references/azure.md) for AKS, identity
 - **GCP**: See [references/gcp.md](references/gcp.md) for GKE, IAM
 - **Cloudflare**: See [references/cloudflare.md](references/cloudflare.md) for Workers, Pages
-

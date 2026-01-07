@@ -52,6 +52,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## License
 
 [MIT](./LICENSE)
+
 ```
 
 ## CONTRIBUTING.md Template
@@ -97,10 +98,12 @@ npm run lint
 ## Reporting Issues
 
 Use GitHub Issues. Include:
+
 - Description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
 - Environment details
+
 ```
 
 ## License Selection
@@ -136,6 +139,7 @@ We will respond within 48 hours.
 ## Issue Templates
 
 ### Bug Report
+
 ```markdown
 ---
 name: Bug Report
@@ -164,6 +168,7 @@ What actually happens.
 ```
 
 ### Feature Request
+
 ```markdown
 ---
 name: Feature Request
@@ -202,4 +207,3 @@ Brief description of changes.
 - [ ] CHANGELOG updated
 - [ ] Linting passes
 ```
-

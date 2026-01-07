@@ -24,6 +24,7 @@ description: Infrastructure as Code best practices for Terraform, Docker, Ansibl
 ## Terraform Quick Reference
 
 ### Essential Commands
+
 ```bash
 terraform init                    # Initialize working directory
 terraform plan                    # Preview changes
@@ -34,6 +35,7 @@ terraform validate                # Validate configuration
 ```
 
 ### Critical Patterns
+
 ```hcl
 # 1. Pin provider versions
 terraform {
@@ -77,6 +79,7 @@ resource "aws_s3_bucket" "state" {
 ## Docker Quick Reference
 
 ### Multi-Stage Build
+
 ```dockerfile
 # Build stage
 FROM node:20-alpine AS builder
@@ -98,6 +101,7 @@ CMD ["node", "dist/index.js"]
 ```
 
 ### Best Practices
+
 ```dockerfile
 # Pin versions
 FROM python:3.12.1-slim-bookworm
@@ -141,4 +145,3 @@ HEALTHCHECK --interval=30s --timeout=3s \
 - **Docker**: See [references/docker.md](references/docker.md)
 - **Ansible**: See [references/ansible.md](references/ansible.md)
 - **Configuration**: See [references/configuration.md](references/configuration.md)
-

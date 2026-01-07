@@ -48,6 +48,7 @@ Link to CONTRIBUTING.md.
 ## License
 
 MIT - See LICENSE.
+
 ```
 
 ## Markdown Best Practices
@@ -63,6 +64,7 @@ MIT - See LICENSE.
 def hello():
     print("Hello, World!")
 ```
+
 ````
 
 ### Lists
@@ -147,4 +149,3 @@ graph LR
 - **Markdown & Mermaid**: See [references/markdown-mermaid.md](references/markdown-mermaid.md)
 - **Technical Writing**: See [references/technical-writing.md](references/technical-writing.md)
 - **Open Source**: See [references/open-source.md](references/open-source.md)
-

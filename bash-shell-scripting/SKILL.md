@@ -38,23 +38,29 @@ local var="value"           # Function-local variable
 ## Error Handling Modes
 
 ### Strict Mode (Fail-Fast)
+
 ```bash
 set -euo pipefail  # Exit immediately on any error
 ```
+
 Use for: Simple linear scripts, dependency installation, straightforward validation.
 
 ### Controlled Mode (Explicit)
+
 ```bash
 set -uo pipefail  # No -e: handle errors explicitly
 ```
+
 Use for: Diagnostics, cleanup operations, commands where failure is expected.
 
 ### Strict + ERR Trap
+
 ```bash
 set -Euo pipefail
 
 trap 'echo "ERROR in ${FUNCNAME[0]:-main} at line $LINENO"' ERR
 ```
+
 Use for: Production scripts with comprehensive error handling.
 
 ## Script Template
@@ -94,6 +100,7 @@ main "$@"
 ## Best Practices
 
 ### Always Quote Variables
+
 ```bash
 # ✅ GOOD
 echo "${var}"
@@ -105,6 +112,7 @@ echo $var
 ```
 
 ### Use Functions
+
 ```bash
 process_file() {
     local file="$1"
@@ -114,11 +122,13 @@ process_file() {
 ```
 
 ### Check Command Existence
+
 ```bash
 command -v docker >/dev/null 2>&1 || die "docker is required"
 ```
 
 ### Temporary Files
+
 ```bash
 readonly TEMP_FILE="$(mktemp)"
 trap 'rm -f "$TEMP_FILE"' EXIT
@@ -127,6 +137,7 @@ echo "data" > "$TEMP_FILE"
 ```
 
 ### Lock Files
+
 ```bash
 exec 200>"/tmp/${SCRIPT_NAME}.lock"
 flock -n 200 || { echo "Already running"; exit 1; }
@@ -135,6 +146,7 @@ flock -n 200 || { echo "Already running"; exit 1; }
 ## Performance Patterns
 
 ### Avoid Subshells in Loops
+
 ```bash
 # ❌ BAD - subshell, variables don't persist
 count=0
@@ -152,6 +164,7 @@ echo "$count"  # Correct
 ```
 
 ### Use Arrays
+
 ```bash
 # Arrays for multiple values
 files=("file1.txt" "file2.txt" "file3.txt")
@@ -201,4 +214,3 @@ parse_args() {
 - **Shell Utilities**: See [references/shell-utilities.md](references/shell-utilities.md) for curl, jq, lynx
 - **Makefile Patterns**: See [references/makefile-patterns.md](references/makefile-patterns.md)
 - **CLI Design**: See [references/cli-design.md](references/cli-design.md)
-

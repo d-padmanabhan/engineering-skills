@@ -82,6 +82,7 @@ if __name__ == "__main__":
 ## Key Patterns
 
 ### Defensive Programming
+
 ```python
 # Validate inputs early (fail-fast)
 def process_user(user_id: str | None) -> User:
@@ -91,6 +92,7 @@ def process_user(user_id: str | None) -> User:
 ```
 
 ### No Mutable Defaults
+
 ```python
 # BAD
 def foo(items: list[str] = []):
@@ -103,6 +105,7 @@ def foo(items: list[str] | None = None):
 ```
 
 ### Error Handling
+
 ```python
 # Re-raise with context at boundaries
 try:
@@ -112,6 +115,7 @@ except Exception as e:
 ```
 
 ### Logging Setup
+
 ```python
 import logging
 import time
@@ -194,4 +198,3 @@ class User(BaseModel):
 - **Testing Patterns**: See [references/testing-patterns.md](references/testing-patterns.md) for pytest, mocking, fixtures
 - **AWS Lambda**: See [references/aws-lambda.md](references/aws-lambda.md) for boto3 patterns, Lambda best practices
 - **AWS & Boto3**: See [references/aws-boto3.md](references/aws-boto3.md) for client configuration, error handling, pagination, Lambda patterns
-

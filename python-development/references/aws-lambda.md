@@ -188,4 +188,3 @@ def create_boto3_client(
 - [ ] Never log credentials or session tokens
 - [ ] Dry-run mode for testing
 - [ ] Pass clients to functions as parameters
-

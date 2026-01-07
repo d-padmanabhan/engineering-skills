@@ -147,6 +147,7 @@ For very complex validation patterns (>50 characters, multiple nested groups), c
 3. **Pregex** (optional) - For teams that frequently work with complex regex and need maximum readability
 
 **Preference order:**
+
 1. Simple stdlib `re` with variables/comments
 2. `re.VERBOSE` flag for complex patterns
 3. Validation library for structured data

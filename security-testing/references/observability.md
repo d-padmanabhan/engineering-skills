@@ -3,16 +3,19 @@
 ## Three Pillars
 
 ### Logs
+
 - Event records with context
 - Structured format (JSON)
 - Centralized collection
 
 ### Metrics
+
 - Numerical measurements over time
 - Counters, gauges, histograms
 - Alerting thresholds
 
 ### Traces
+
 - Request flow across services
 - Distributed tracing
 - Performance analysis
@@ -171,12 +174,13 @@ def ready():
 ## Dashboard Essentials
 
 ### RED Method (Request-focused)
+
 - **R**ate: Requests per second
 - **E**rrors: Error rate
 - **D**uration: Latency distribution
 
 ### USE Method (Resource-focused)
+
 - **U**tilization: How busy
 - **S**aturation: Queue depth
 - **E**rrors: Error count
-

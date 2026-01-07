@@ -181,4 +181,3 @@ helm show values ./my-chart
 4. **Validate inputs**: Use schema validation
 5. **Test charts**: Use helm unittest or similar
 6. **Lock dependencies**: Commit Chart.lock
-

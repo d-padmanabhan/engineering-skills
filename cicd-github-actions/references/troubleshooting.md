@@ -3,6 +3,7 @@
 ## Common Issues
 
 ### Permissions Denied
+
 ```yaml
 # Issue: Resource not accessible by integration
 # Solution: Add required permissions
@@ -12,6 +13,7 @@ permissions:
 ```
 
 ### Cache Not Restoring
+
 ```yaml
 # Check cache key matches exactly
 - uses: actions/cache@v4
@@ -24,6 +26,7 @@ permissions:
 ```
 
 ### Secrets Not Available
+
 ```yaml
 # Secrets not available in:
 # - fork PRs (security)
@@ -41,6 +44,7 @@ jobs:
 ## Debugging
 
 ### Enable Debug Logging
+
 ```yaml
 # Repository secret
 ACTIONS_STEP_DEBUG: true
@@ -53,6 +57,7 @@ ACTIONS_RUNNER_DEBUG: true
 ```
 
 ### Print Context
+
 ```yaml
 - name: Dump context
   run: |
@@ -66,6 +71,7 @@ ACTIONS_RUNNER_DEBUG: true
 ```
 
 ### SSH Debug Session
+
 ```yaml
 - name: Setup tmate session
   if: failure()
@@ -76,6 +82,7 @@ ACTIONS_RUNNER_DEBUG: true
 ## Performance
 
 ### Slow Checkout
+
 ```yaml
 # Use shallow clone
 - uses: actions/checkout@v4
@@ -84,6 +91,7 @@ ACTIONS_RUNNER_DEBUG: true
 ```
 
 ### Large Artifacts
+
 ```yaml
 # Compress before upload
 - run: tar -czf build.tar.gz dist/
@@ -95,6 +103,7 @@ ACTIONS_RUNNER_DEBUG: true
 ```
 
 ### Parallel Jobs
+
 ```yaml
 jobs:
   test:
@@ -108,6 +117,7 @@ jobs:
 ## Error Handling
 
 ### Continue on Error
+
 ```yaml
 - name: Non-critical step
   continue-on-error: true
@@ -119,6 +129,7 @@ jobs:
 ```
 
 ### Retry Logic
+
 ```yaml
 - name: Retry on failure
   uses: nick-fields/retry@v2
@@ -129,6 +140,7 @@ jobs:
 ```
 
 ### Timeout
+
 ```yaml
 jobs:
   build:
@@ -158,4 +170,3 @@ jobs:
 - run: |
     echo "Value: ${{ env.MY_VAR }}"
 ```
-

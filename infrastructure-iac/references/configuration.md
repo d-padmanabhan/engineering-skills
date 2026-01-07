@@ -11,6 +11,7 @@ Configuration is applied in order, with later sources overriding earlier ones:
 5. **Command-line parameters** (`git commit --author=...`, `app --api-key=...`)
 
 This pattern is used by Git, SSH, and many Unix tools. Use this hierarchy to allow:
+
 - System defaults
 - User preferences
 - Project settings
@@ -20,6 +21,7 @@ This pattern is used by Git, SSH, and many Unix tools. Use this hierarchy to all
 ### Precedence Examples
 
 **Git Configuration:**
+
 ```bash
 # System-wide (lowest priority)
 /etc/gitconfig
@@ -38,6 +40,7 @@ git commit --author="Jane Doe"
 ```
 
 **SSH Configuration:**
+
 ```bash
 # System-wide
 /etc/ssh/ssh_config
@@ -50,6 +53,7 @@ ssh -p 2222 user@host
 ```
 
 **Application Configuration:**
+
 ```python
 # Load in precedence order
 config = {}
@@ -107,6 +111,7 @@ debug = os.getenv("DEBUG", "false").lower() in ["true", "1", "yes", "on"]
 ```
 
 **Rationale:**
+
 - Simple and unambiguous
 - Works across all languages
 - No parsing ambiguity
@@ -161,6 +166,7 @@ PORT="${PORT:-8080}"
 ## Configuration Files
 
 ### YAML Configuration
+
 ```yaml
 # config.yaml
 server:
@@ -178,6 +184,7 @@ logging:
 ```
 
 ### Environment-Specific Overrides
+
 ```
 config/
 ├── default.yaml      # Base config
@@ -193,6 +200,7 @@ config/
 ### AWS Secrets Manager
 
 **Python Example:**
+
 ```python
 import boto3
 from botocore.exceptions import ClientError
@@ -214,6 +222,7 @@ db_password = get_secret("myapp/database/password")
 ```
 
 **Terraform Example:**
+
 ```hcl
 resource "aws_secretsmanager_secret" "db_password" {
   name = "myapp/db_password"
@@ -233,6 +242,7 @@ output "db_password" {
 ### HashiCorp Vault
 
 **Python Example:**
+
 ```python
 import hvac
 
@@ -255,6 +265,7 @@ db_password = secrets["password"]
 ```
 
 **CLI Example:**
+
 ```bash
 # Store secret
 vault kv put secret/myapp db_password=supersecret
@@ -269,6 +280,7 @@ export DB_PASSWORD=$(vault kv get -field=db_password secret/myapp)
 ### Kubernetes Secrets
 
 **Create Secret:**
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -281,6 +293,7 @@ stringData:
 ```
 
 **Use in Pod:**
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -301,6 +314,7 @@ spec:
 ```
 
 **Python Example (Reading from K8s):**
+
 ```python
 from kubernetes import client, config
 
@@ -317,6 +331,7 @@ def get_k8s_secret(namespace: str, secret_name: str, key: str) -> str:
 ### Azure Key Vault
 
 **Python Example:**
+
 ```python
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
@@ -342,6 +357,7 @@ db_password = get_azure_secret(
 ### Google Secret Manager
 
 **Python Example:**
+
 ```python
 from google.cloud import secretmanager
 
@@ -501,4 +517,3 @@ def process_request():
 8. **Rotate secrets** regularly
 9. **Audit access** to sensitive configuration
 10. **Version** configuration changes
-

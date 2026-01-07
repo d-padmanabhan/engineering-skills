@@ -611,6 +611,7 @@ tesseract diagram_processed.png output.txt
 **Tools:** RAG (Retrieval-Augmented Generation) system
 
 **Characteristics:**
+
 - Pre-indexed documentation
 - Chunked and searchable
 - Retrieves only relevant sections
@@ -661,6 +662,7 @@ cat cache/page.html
 ```
 
 **Best Practices:**
+
 - Cache responses locally
 - Respect `robots.txt`
 - Add delays between requests (1-2 seconds)
@@ -692,12 +694,14 @@ When the goal is "read AWS, Cloudflare, Kubernetes docs reliably at scale", pref
 ### Chunking Strategy
 
 **For documentation:**
+
 - **Size:** 500-1000 tokens per chunk
 - **Overlap:** 50-100 tokens between chunks
 - **Boundaries:** Respect section headings, code blocks
 - **Metadata:** Include URL, section title, page number
 
 **Example chunk structure:**
+
 ```json
 {
   "content": "## AWS S3 Bucket Configuration\n\n...",
@@ -730,6 +734,7 @@ When the goal is "read AWS, Cloudflare, Kubernetes docs reliably at scale", pref
 ### Anti-Patterns
 
 **Don't:**
+
 - Scrape the same docs repeatedly
 - Load entire documentation sets into context
 - Ignore version information
@@ -737,6 +742,7 @@ When the goal is "read AWS, Cloudflare, Kubernetes docs reliably at scale", pref
 - Use stale documentation
 
 **Do:**
+
 - Use RAG for official docs
 - Cache retrieval results
 - Include source URLs

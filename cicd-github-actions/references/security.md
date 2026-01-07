@@ -156,4 +156,3 @@ jobs:
     fail-build: true
     severity-cutoff: high
 ```
-

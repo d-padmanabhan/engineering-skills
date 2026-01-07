@@ -115,6 +115,7 @@ def login():
 | Traces | Request flows | Jaeger, X-Ray |
 
 ### Structured Logging
+
 ```python
 logger.info("User action", extra={
     "user_id": user.id,
@@ -130,4 +131,3 @@ logger.info("User action", extra={
 - **Testing Strategies**: See [references/testing-strategies.md](references/testing-strategies.md)
 - **API Design**: See [references/api-design.md](references/api-design.md)
 - **Observability**: See [references/observability.md](references/observability.md)
-

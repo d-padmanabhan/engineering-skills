@@ -82,6 +82,7 @@ skill-name/
 ### Progressive Disclosure
 
 Skills use a three-level loading system:
+
 1. **Metadata** (~100 tokens) - Always loaded, used for triggering
 2. **SKILL.md body** (<5k tokens) - Loaded when skill triggers
 3. **References** (unlimited) - Loaded only when needed

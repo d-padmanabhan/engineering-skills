@@ -372,18 +372,21 @@ Port = Annotated[int, "Port number between 1 and 65535"]
 ## When to Use Third-Party Libraries
 
 **Use third-party libraries when:**
+
 - Standard library doesn't provide the functionality
 - Third-party library offers significant performance improvements
 - Standard library solution is too complex for the use case
 - You need features not available in stdlib
 
 **Examples:**
+
 - **`requests`** over `urllib` - Better API, connection pooling, sessions
 - **`pydantic`** over `dataclasses` - Advanced validation, JSON schema
 - **`click`** over `argparse` - Better CLI framework (if building complex CLIs)
 - **`httpx`** over `urllib` - Async HTTP, HTTP/2 support
 
 **Prefer stdlib when:**
+
 - `pathlib` over `path.py`
 - `tomllib` over `tomli` (Python 3.11+)
 - `secrets` over `random` for security

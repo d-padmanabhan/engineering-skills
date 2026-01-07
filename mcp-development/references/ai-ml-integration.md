@@ -3,6 +3,7 @@
 ## LLM API Patterns
 
 ### Claude API
+
 ```python
 import anthropic
 
@@ -20,6 +21,7 @@ print(message.content[0].text)
 ```
 
 ### Streaming
+
 ```python
 with client.messages.stream(
     model="claude-sonnet-4-20250514",
@@ -31,6 +33,7 @@ with client.messages.stream(
 ```
 
 ### Tool Use
+
 ```python
 tools = [
     {
@@ -130,6 +133,7 @@ Question: {query}"""
 ## Prompt Engineering
 
 ### System Prompts
+
 ```python
 system_prompt = """You are a helpful assistant that answers questions about our product.
 
@@ -148,6 +152,7 @@ message = client.messages.create(
 ```
 
 ### Few-Shot Examples
+
 ```python
 messages = [
     {"role": "user", "content": "Classify: I love this product!"},
@@ -198,4 +203,3 @@ def cache_key(messages: list) -> str:
 5. **Logging**: Log prompts and responses for debugging
 6. **Cost management**: Monitor token usage
 7. **Testing**: Mock API calls in tests
-

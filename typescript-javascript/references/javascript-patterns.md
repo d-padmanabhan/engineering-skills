@@ -273,4 +273,3 @@ const result = await client.query(
   [userId]  // Never interpolate user input
 );
 ```
-

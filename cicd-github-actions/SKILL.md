@@ -174,4 +174,3 @@ jobs:
 - **Workflow Patterns**: See [references/workflow-patterns.md](references/workflow-patterns.md)
 - **Security**: See [references/security.md](references/security.md)
 - **Troubleshooting**: See [references/troubleshooting.md](references/troubleshooting.md)
-

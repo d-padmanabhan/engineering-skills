@@ -100,21 +100,21 @@ parse_args() {
 
 **Guidelines:**
 
-* **Scope**
-  * Use `local` **inside functions** for locals.
-  * At top-level, simple assignments create globals.
+- **Scope**
+  - Use `local` **inside functions** for locals.
+  - At top-level, simple assignments create globals.
 
-* **Attributes (Bash/ksh/zsh only)**
-  * Use `declare` **or** `typeset` to add attributes:
-    * `-i` integer, `-a` array, `-A` assoc array, `-l` lower, `-u` upper, `-r` readonly, `-x` export, `-g` global (bash/zsh).
-  * In **bash**, `typeset` ≈ `declare`. Prefer `declare` for clarity in bash; use `typeset` if targeting ksh/zsh too.
+- **Attributes (Bash/ksh/zsh only)**
+  - Use `declare` **or** `typeset` to add attributes:
+    - `-i` integer, `-a` array, `-A` assoc array, `-l` lower, `-u` upper, `-r` readonly, `-x` export, `-g` global (bash/zsh).
+  - In **bash**, `typeset` ≈ `declare`. Prefer `declare` for clarity in bash; use `typeset` if targeting ksh/zsh too.
 
-* **Intent**
-  * Use **`readonly`** for constants.
-  * Use **`export`** only if a child process needs the value.
+- **Intent**
+  - Use **`readonly`** for constants.
+  - Use **`export`** only if a child process needs the value.
 
-* **Portability**
-  * `typeset`/`declare` are **not POSIX**. For `/bin/sh` portability, avoid them (and arrays) and stick to plain assignments + `export`/`readonly`.
+- **Portability**
+  - `typeset`/`declare` are **not POSIX**. For `/bin/sh` portability, avoid them (and arrays) and stick to plain assignments + `export`/`readonly`.
 
 **Examples:**
 
@@ -323,4 +323,3 @@ main() {
 
 main "$@"
 ```
-

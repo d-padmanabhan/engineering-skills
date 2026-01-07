@@ -86,16 +86,19 @@ To refine the solution, clarify:
 When asking questions (limit to ≤3), prioritize those that would most change the solution:
 
 **Scope & Constraints:**
+
 - Essential vs nice-to-have
 - Performance/scale/resource constraints
 - Usage pattern & volume
 
 **Technical Context:**
+
 - Existing stack
 - Integrations/dependencies
 - Deployment target (local/cloud/container)
 
 **Quality & Risk:**
+
 - Risk tolerance
 - Compliance/security needs
 - Appropriate testing level
@@ -103,36 +106,42 @@ When asking questions (limit to ≤3), prioritize those that would most change t
 ## Best Practices by Language
 
 ### Python (target 3.12+)
+
 - Use type hints and PEP 8
 - Prefer `functools.cache`/`lru_cache`, `dataclasses`, modern `typing`
 - Use context managers for resources (`with` statements)
 - Prefer stdlib over adding dependencies
 
 ### Go
+
 - Handle all errors explicitly
 - Use `defer` for cleanup
 - Follow Effective Go; keep interfaces small
 - Run `govulncheck` in CI
 
 ### JavaScript/TypeScript
+
 - Use async/await; avoid callback pyramids
 - Prefer destructuring; `const` by default, `let` when needed
 - Enable strict mode (`"strict": true` in TS)
 - ESLint with zero warnings policy
 
 ### Bash
+
 - Use `set -euo pipefail` for strict error handling
 - Use `shfmt` for formatting and `shellcheck` for linting
 - Use functions for reusable code blocks
 - Quote variables: `"${var}"` not `$var`
 
 ### Docker
+
 - Use multi-stage builds to reduce image size
 - Run as non-root user
 - Pin base image versions (`python:3.12.1-slim`, not `python:latest`)
 - Scan images for vulnerabilities
 
 ### AWS (boto3/Lambda)
+
 - Create boto3 clients in global scope (outside Lambda handler)
 - Use `botocore.config.Config` for retry/timeout settings
 - Handle specific `ClientError` codes, not generic exceptions
@@ -140,9 +149,9 @@ When asking questions (limit to ≤3), prioritize those that would most change t
 - Never log AWS credentials or session tokens
 
 ### Terraform/CloudFormation
+
 - **Terraform:** `snake_case` for resource, variable, output names
 - **CloudFormation:** Hungarian notation (parameters `p*`, resources `r*`)
 - Use remote state with locking
 - Tag all resources with `owner`, `environment`, `cost_center`
 - Never commit `.terraform/` or `*.tfstate` files
-

@@ -19,6 +19,7 @@ description: Go and Rust systems programming best practices for performance-crit
 ## Go Quick Reference
 
 ### Essential Commands
+
 ```bash
 go mod init <module>          # Initialize new module
 go mod tidy                   # Add missing, remove unused
@@ -29,6 +30,7 @@ govulncheck ./...            # Check vulnerabilities
 ```
 
 ### Critical Patterns
+
 ```go
 // 1. Always check errors
 result, err := someFunc()
@@ -79,6 +81,7 @@ func TestAdd(t *testing.T) {
 ## Rust Quick Reference
 
 ### Essential Commands
+
 ```bash
 cargo new my-project          # Create new project
 cargo build --release         # Build optimized
@@ -89,6 +92,7 @@ cargo audit                   # Security audit
 ```
 
 ### Critical Patterns
+
 ```rust
 // 1. Ownership - each value has one owner
 let s1 = String::from("hello");
@@ -185,4 +189,3 @@ fn process_user(id: &str) -> anyhow::Result<User> {
 - **Go Generics**: See [references/go-generics.md](references/go-generics.md) for generic functions, types, constraints, interfaces
 - **Go Deployment**: See [references/go-deployment.md](references/go-deployment.md) for building binaries, Docker, CI/CD, version management
 - **Rust Patterns**: See [references/rust-patterns.md](references/rust-patterns.md) for ownership, lifetimes, async
-

@@ -3,6 +3,7 @@
 ## Markdown Essentials
 
 ### Text Formatting
+
 ```markdown
 **bold** or __bold__
 *italic* or _italic_
@@ -11,6 +12,7 @@
 ```
 
 ### Block Quotes
+
 ```markdown
 > This is a quote
 > 
@@ -18,6 +20,7 @@
 ```
 
 ### Task Lists
+
 ```markdown
 - [x] Completed task
 - [ ] Incomplete task
@@ -25,6 +28,7 @@
 ```
 
 ### Collapsible Sections
+
 ```markdown
 <details>
 <summary>Click to expand</summary>
@@ -35,6 +39,7 @@ Hidden content here.
 ```
 
 ### Admonitions (GitHub)
+
 ```markdown
 > [!NOTE]
 > Information note
@@ -52,6 +57,7 @@ Hidden content here.
 ## Mermaid Diagrams
 
 ### Flowchart
+
 ```mermaid
 flowchart TD
     A[Start] --> B{Is valid?}
@@ -62,6 +68,7 @@ flowchart TD
 ```
 
 ### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     autonumber
@@ -78,6 +85,7 @@ sequenceDiagram
 ```
 
 ### Class Diagram
+
 ```mermaid
 classDiagram
     class User {
@@ -93,6 +101,7 @@ classDiagram
 ```
 
 ### State Diagram
+
 ```mermaid
 stateDiagram-v2
     [*] --> Pending
@@ -104,6 +113,7 @@ stateDiagram-v2
 ```
 
 ### Entity Relationship Diagram
+
 ```mermaid
 erDiagram
     USER ||--o{ ORDER : places
@@ -123,6 +133,7 @@ erDiagram
 ```
 
 ### Gantt Chart
+
 ```mermaid
 gantt
     title Project Timeline
@@ -138,6 +149,7 @@ gantt
 ```
 
 ### Pie Chart
+
 ```mermaid
 pie title Traffic Sources
     "Organic" : 45
@@ -153,4 +165,3 @@ pie title Traffic Sources
 3. **Add labels**: Make relationships clear
 4. **Limit scope**: One diagram per concept
 5. **Include in docs**: Diagrams should live near related text
-

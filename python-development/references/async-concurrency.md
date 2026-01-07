@@ -168,4 +168,3 @@ import bisect
 sorted_list = [1, 3, 5, 7, 9]
 bisect.insort(sorted_list, 4)  # [1, 3, 4, 5, 7, 9]
 ```
-

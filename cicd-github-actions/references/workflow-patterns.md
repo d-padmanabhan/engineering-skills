@@ -282,4 +282,3 @@ jobs:
           echo "Log level: ${{ inputs.log-level }}"
           echo "Dry run: ${{ inputs.dry-run }}"
 ```
-

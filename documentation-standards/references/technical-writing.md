@@ -3,24 +3,28 @@
 ## Document Types
 
 ### README
+
 - Project overview and purpose
 - Installation instructions
 - Quick start guide
 - Links to detailed docs
 
 ### API Documentation
+
 - Endpoint descriptions
 - Request/response examples
 - Error codes
 - Authentication
 
 ### Architecture Decision Records (ADRs)
+
 - Context and problem
 - Decision made
 - Consequences
 - Status
 
 ### Runbooks
+
 - Step-by-step procedures
 - Troubleshooting guides
 - Emergency responses
@@ -63,6 +67,7 @@ We will use PostgreSQL as our primary database.
 ## Writing Guidelines
 
 ### Be Concise
+
 ```markdown
 ❌ In order to be able to run the application...
 ✅ To run the application...
@@ -72,6 +77,7 @@ We will use PostgreSQL as our primary database.
 ```
 
 ### Use Active Voice
+
 ```markdown
 ❌ The file is created by the script.
 ✅ The script creates the file.
@@ -81,6 +87,7 @@ We will use PostgreSQL as our primary database.
 ```
 
 ### Use Present Tense
+
 ```markdown
 ❌ The function will return a list of users.
 ✅ The function returns a list of users.
@@ -90,6 +97,7 @@ We will use PostgreSQL as our primary database.
 ```
 
 ### Include Examples
+
 ```markdown
 ❌ Use the `fetch` function to make requests.
 
@@ -99,6 +107,7 @@ We will use PostgreSQL as our primary database.
 const response = await fetch('/api/users');
 const users = await response.json();
 ```
+
 ```
 
 ## Code Documentation
@@ -129,6 +138,7 @@ def calculate_discount(price: float, percentage: float) -> float:
 ```
 
 ### API Documentation
+
 ```yaml
 /users/{id}:
   get:
@@ -176,4 +186,3 @@ def calculate_discount(price: float, percentage: float) -> float:
 ### Security
 - Fixed vulnerability CVE-XXXX
 ```
-

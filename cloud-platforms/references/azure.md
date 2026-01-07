@@ -129,4 +129,3 @@ resource "azurerm_storage_account" "main" {
   }
 }
 ```
-

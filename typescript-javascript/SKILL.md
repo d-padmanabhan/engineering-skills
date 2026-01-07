@@ -176,4 +176,3 @@ results.forEach(result => {
 
 - **TypeScript Patterns**: See [references/typescript-patterns.md](references/typescript-patterns.md) for advanced types, generics, mapped types
 - **JavaScript Patterns**: See [references/javascript-patterns.md](references/javascript-patterns.md) for JSDoc, ESM, performance
-

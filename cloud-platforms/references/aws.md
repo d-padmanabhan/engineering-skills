@@ -3,6 +3,7 @@
 ## EKS Best Practices
 
 ### Cluster Configuration
+
 ```hcl
 resource "aws_eks_cluster" "main" {
   name     = var.cluster_name
@@ -26,6 +27,7 @@ resource "aws_eks_cluster" "main" {
 ```
 
 ### Pod Identity (Recommended)
+
 ```hcl
 resource "aws_eks_pod_identity_association" "app" {
   cluster_name    = aws_eks_cluster.main.name
@@ -177,4 +179,3 @@ resource "aws_s3_bucket_public_access_block" "data" {
   restrict_public_buckets = true
 }
 ```
-

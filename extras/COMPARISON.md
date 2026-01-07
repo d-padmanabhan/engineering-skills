@@ -11,6 +11,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 **Source:** `cursor-engineering-rules/rules/470-postgresql.mdc` (982 lines)
 
 **What's Missing:**
+
 - Database naming conventions (snake_case, plural table names)
 - Schema design patterns (indexes, foreign keys, constraints)
 - Migration best practices (reversible, versioned, tested)
@@ -20,6 +21,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 - PostgreSQL-specific features (JSONB, arrays, full-text search)
 
 **Recommendation:** Create `database-postgresql/` skill with:
+
 - `SKILL.md` - Core PostgreSQL principles and patterns
 - `references/schema-design.md` - Naming conventions, table design
 - `references/migrations.md` - Migration patterns and best practices
@@ -35,6 +37,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 **Current:** `core-engineering/references/git-workflow.md` (basic commit standards)
 
 **What's Missing:**
+
 - **Git Fundamentals:**
   - Refs (local branches, remote-tracking branches, tags, HEAD)
   - Three-tier model (remote → remote-tracking → local)
@@ -53,6 +56,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
   - Hook installation and updates
 
 **Recommendation:** Expand `core-engineering/references/git-workflow.md` or create dedicated `git-version-control/` skill with:
+
 - `SKILL.md` - Git fundamentals and modern commands
 - `references/reflog-recovery.md` - Reflog patterns and recovery
 - `references/branch-workflow.md` - Branch management and workflows
@@ -67,6 +71,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 **Source:** `cursor-engineering-rules/rules/110-configuration.mdc` (full rule)
 
 **What's Missing:**
+
 - **Configuration Precedence:**
   - System → User → Local → Environment → Command-line hierarchy
   - Precedence examples (Git, SSH patterns)
@@ -96,6 +101,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 **Source:** `cursor-engineering-rules/rules/120-utilities.mdc` (full rule)
 
 **What's Missing:**
+
 - **Documentation Ingestion Patterns:**
   - Tool selection matrix (curl → lynx → Playwright → Context7 → VLM → OCR)
   - Progressive escalation strategy
@@ -154,6 +160,7 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 **Status:** Context management templates, could be adapted
 
 **Content:**
+
 - `active-context.md.template`
 - `creative-template.md.template`
 - `progress.md.template`
@@ -215,13 +222,13 @@ This document identifies what's missing in `dp-engineering-skills` compared to `
 
 ### 🟡 Medium Priority (Partial Coverage)
 
-4. **Expand Command-Line Utilities** - Documentation ingestion patterns missing
-5. **Verify Makefile coverage** - Ensure all patterns are included
-6. **Verify Open Source coverage** - Ensure all patterns are included
+1. **Expand Command-Line Utilities** - Documentation ingestion patterns missing
+2. **Verify Makefile coverage** - Ensure all patterns are included
+3. **Verify Open Source coverage** - Ensure all patterns are included
 
 ### 🟢 Low Priority (Nice to Have)
 
-7. **Add Templates as References** - Include context management templates as examples in `agent-workflow/references/`
+1. **Add Templates as References** - Include context management templates as examples in `agent-workflow/references/`
 
 ---
 

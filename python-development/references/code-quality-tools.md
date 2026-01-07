@@ -123,12 +123,14 @@ score=yes
 ## Pylint Score Targets
 
 **Score interpretation:**
+
 - **10.0** - Perfect (rare, may require disabling some checks)
 - **9.5-9.9** - Excellent (target for production code)
 - **9.0-9.4** - Good (acceptable, but aim higher)
 - **<9.0** - Needs improvement
 
 **Common issues that lower score:**
+
 - Missing docstrings
 - Long lines (>120 chars)
 - Too many arguments (>5)
@@ -136,6 +138,7 @@ score=yes
 - Cyclomatic complexity (>10)
 
 **Improving pylint score:**
+
 ```bash
 # Run pylint to see issues
 pylint path/to/file.py

@@ -102,6 +102,7 @@ git fetch origin --prune && git switch -c feat/your-feature origin/main
 ```
 
 **Advantages:**
+
 - Faster (one fewer step)
 - Works even if your local `main` is in a weird state
 - Guaranteed to start from remote's latest

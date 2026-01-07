@@ -15,23 +15,23 @@ VERSION := $(shell git describe --tags --always --dirty)
 
 # Build
 build: $(GO_FILES)
-	go build -ldflags="-X main.version=$(VERSION)" -o $(BINARY_NAME) .
+ go build -ldflags="-X main.version=$(VERSION)" -o $(BINARY_NAME) .
 
 # Test
 test:
-	go test -race -cover ./...
+ go test -race -cover ./...
 
 # Clean
 clean:
-	rm -f $(BINARY_NAME)
-	rm -rf dist/
+ rm -f $(BINARY_NAME)
+ rm -rf dist/
 
 # Help
 help:
-	@echo "Available targets:"
-	@echo "  build  - Build the binary"
-	@echo "  test   - Run tests"
-	@echo "  clean  - Remove build artifacts"
+ @echo "Available targets:"
+ @echo "  build  - Build the binary"
+ @echo "  test   - Run tests"
+ @echo "  clean  - Remove build artifacts"
 ```
 
 ## Phony Targets
@@ -67,11 +67,11 @@ PORT ?= 8080
 ```makefile
 # Compile .c to .o
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+ $(CC) $(CFLAGS) -c $< -o $@
 
 # Build executable from source
 %: %.go
-	go build -o $@ $<
+ go build -o $@ $<
 ```
 
 ## Functions
@@ -116,10 +116,10 @@ PLATFORMS := linux-amd64 darwin-amd64 windows-amd64
 release: $(addprefix dist/myapp-, $(PLATFORMS))
 
 dist/myapp-%: $(GO_FILES)
-	@mkdir -p dist
-	GOOS=$(word 1,$(subst -, ,$*)) \
-	GOARCH=$(word 2,$(subst -, ,$*)) \
-	go build -o $@ .
+ @mkdir -p dist
+ GOOS=$(word 1,$(subst -, ,$*)) \
+ GOARCH=$(word 2,$(subst -, ,$*)) \
+ go build -o $@ .
 ```
 
 ## Docker Integration
@@ -131,13 +131,13 @@ IMAGE_NAME := myapp
 IMAGE_TAG := $(VERSION)
 
 docker-build:
-	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
+ docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
 
 docker-push: docker-build
-	docker push $(IMAGE_NAME):$(IMAGE_TAG)
+ docker push $(IMAGE_NAME):$(IMAGE_TAG)
 
 docker-run:
-	docker run --rm -p 8080:8080 $(IMAGE_NAME):$(IMAGE_TAG)
+ docker run --rm -p 8080:8080 $(IMAGE_NAME):$(IMAGE_TAG)
 ```
 
 ## Help Target
@@ -145,18 +145,18 @@ docker-run:
 ```makefile
 .PHONY: help
 help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
-		sort | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+ @grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+  sort | \
+  awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 build: ## Build the application
-	go build -o bin/app .
+ go build -o bin/app .
 
 test: ## Run tests
-	go test ./...
+ go test ./...
 
 lint: ## Run linters
-	golangci-lint run
+ golangci-lint run
 ```
 
 ## Best Practices
@@ -173,15 +173,14 @@ lint: ## Run linters
 
 # Suppress echoing with @
 build:
-	@echo "Building..."
-	@go build -o bin/app .
+ @echo "Building..."
+ @go build -o bin/app .
 
 # Use - to ignore errors
 clean:
-	-rm -rf dist/
+ -rm -rf dist/
 
 # Group related targets
 .PHONY: dev
 dev: build test lint  ## Run development checks
 ```
-

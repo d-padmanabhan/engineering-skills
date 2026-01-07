@@ -9,6 +9,7 @@ The **reflog** (reference log) is Git's time machine. While `git log` shows only
 ## Why Reflog Matters
 
 **Reflog enables:**
+
 - **Recovery** - Restore deleted branches, undo resets, find lost commits
 - **Confidence** - Use advanced features (rebase, reset) without fear
 - **Debugging** - Track "what commit was I on 20 minutes ago?"
@@ -19,6 +20,7 @@ The **reflog** (reference log) is Git's time machine. While `git log` shows only
 ## Basic Reflog Usage
 
 **View reflog:**
+
 ```bash
 git reflog                    # Show all HEAD movements
 git reflog --date=relative    # Show with relative timestamps
@@ -27,6 +29,7 @@ git reflog main               # Show reflog for specific branch
 ```
 
 **Example output:**
+
 ```
 e4f3c1d HEAD@{0}: reset: moving to HEAD~1
 8a17f0e HEAD@{1}: commit: add missing validation
@@ -35,6 +38,7 @@ abc1234 HEAD@{3}: commit: implement login feature
 ```
 
 **Understanding `HEAD@{n}`:**
+
 - `HEAD@{0}` - Current position
 - `HEAD@{1}` - One step ago
 - `HEAD@{5}` - Five steps ago
@@ -95,6 +99,7 @@ git checkout -b recover-stash def5678  # Recover to new branch
 ## Advanced Reflog Patterns
 
 **Filter reflog by operation:**
+
 ```bash
 git reflog show --all | grep checkout    # Show only checkouts
 git reflog show --all | grep reset       # Show only resets
@@ -102,6 +107,7 @@ git reflog show --all | grep commit       # Show only commits
 ```
 
 **Find commits by time:**
+
 ```bash
 git reflog --since="2 hours ago"         # Last 2 hours
 git reflog --until="1 day ago"          # Up to 1 day ago
@@ -109,6 +115,7 @@ git reflog --date=relative              # Human-readable times
 ```
 
 **Reflog for specific refs:**
+
 ```bash
 git reflog show main                    # Reflog for main branch
 git reflog show origin/main             # Reflog for remote-tracking branch
@@ -120,12 +127,14 @@ git reflog show stash                   # Reflog for stashes
 **Important:** Reflog entries expire after 90 days by default (configurable).
 
 **Check expiration settings:**
+
 ```bash
 git config gc.reflogExpire              # Default: 90 days
 git config gc.reflogExpireUnreachable   # Unreachable commits: 30 days
 ```
 
 **Prevent expiration (for important repos):**
+
 ```bash
 # Keep reflog forever
 git config gc.reflogExpire never
@@ -133,6 +142,7 @@ git config gc.reflogExpireUnreachable never
 ```
 
 **Manual cleanup (if needed):**
+
 ```bash
 git reflog expire --expire=now --all    # Expire all entries
 git gc --prune=now                      # Garbage collect expired entries
@@ -157,6 +167,7 @@ git reflog --date=relative | head -10   # See what happened
 ```
 
 **Patterns you'll notice:**
+
 - **Rebases** create multiple HEAD movements as commits are replayed
 - **Resets** jump HEAD to different commits
 - **Merges** move HEAD forward
@@ -166,12 +177,14 @@ git reflog --date=relative | head -10   # See what happened
 ## When Reflog Can't Help
 
 **Reflog limitations:**
+
 - **Only local** - Reflog exists only on your machine (not on remote)
 - **Expires** - Entries expire after 90 days (configurable)
 - **Garbage collected** - Expired entries are removed by `git gc`
 - **Not for remote recovery** - Can't recover from force-push disasters on remote
 
 **For remote recovery:**
+
 - Use branch protection rules
 - Require PR reviews
 - Use `git revert` instead of `git reset` for shared branches
@@ -180,6 +193,7 @@ git reflog --date=relative | head -10   # See what happened
 ## Reflog Best Practices
 
 **1. Use reflog before panicking:**
+
 ```bash
 # Something went wrong? Check reflog first
 git reflog
@@ -188,6 +202,7 @@ git reset --hard HEAD@{n}
 ```
 
 **2. Make reflog part of your workflow:**
+
 ```bash
 # After major operations, check reflog
 git rebase main
@@ -195,11 +210,13 @@ git reflog --date=relative | head -10   # Verify what happened
 ```
 
 **3. Use relative time for easier navigation:**
+
 ```bash
 git reflog --date=relative              # "2 hours ago" vs "2024-12-25 10:30:00"
 ```
 
 **4. Document important commits:**
+
 ```bash
 # If you're about to do something risky, note the current position
 git reflog | head -1                    # Save this output
@@ -207,6 +224,7 @@ git reflog | head -1                    # Save this output
 ```
 
 **5. Enable reflog for all refs (if needed):**
+
 ```bash
 git config core.logAllRefUpdates true   # Track reflog for all refs
 ```
@@ -241,18 +259,21 @@ git log --oneline             # Your commits are back!
 **Reflog changes your relationship with Git:**
 
 **Before reflog:**
+
 - "I hope I don't break anything"
 - Avoid rebase, reset, force-push
 - Fear of losing work
 - Stuck with messy history
 
 **After reflog:**
+
 - "I can always fix it if I do"
 - Confident use of advanced features
 - Experiment freely
 - Clean up history without fear
 
 **This confidence enables:**
+
 - Better commit hygiene (clean up with rebase)
 - Faster workflows (reset when needed)
 - Learning advanced features (safe to experiment)

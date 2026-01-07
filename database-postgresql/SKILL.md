@@ -30,24 +30,28 @@ description: PostgreSQL database design patterns, naming conventions, schema des
 ### Essential Patterns
 
 **Timestamps:**
+
 ```sql
 created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
 updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
 ```
 
 **Soft Deletes:**
+
 ```sql
 deleted_at TIMESTAMP WITH TIME ZONE NULL
 CREATE INDEX idx_users_deleted_at ON users(deleted_at) WHERE deleted_at IS NULL;
 ```
 
 **Enums:**
+
 ```sql
 CREATE TYPE user_status AS ENUM ('active', 'inactive', 'suspended');
 status user_status DEFAULT 'active' NOT NULL
 ```
 
 **Foreign Keys:**
+
 ```sql
 user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE RESTRICT
 ```
@@ -89,6 +93,7 @@ DROP TABLE IF EXISTS users;
 ## Security Essentials
 
 **Always use parameterized queries:**
+
 ```python
 # GOOD
 cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
@@ -98,6 +103,7 @@ cursor.execute(f"SELECT * FROM users WHERE email = '{email}'")
 ```
 
 **Row-Level Security for multi-tenant:**
+
 ```sql
 ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
 CREATE POLICY orders_user_policy ON orders
@@ -107,16 +113,19 @@ CREATE POLICY orders_user_policy ON orders
 ## Performance Basics
 
 **Index foreign keys:**
+
 ```sql
 CREATE INDEX idx_orders_user_id ON orders(user_id);
 ```
 
 **Partial indexes for filtered queries:**
+
 ```sql
 CREATE INDEX idx_users_active ON users(email) WHERE deleted_at IS NULL;
 ```
 
 **Composite indexes for common patterns:**
+
 ```sql
 CREATE INDEX idx_orders_user_created ON orders(user_id, created_at DESC);
 ```
@@ -134,6 +143,7 @@ CREATE INDEX idx_orders_user_created ON orders(user_id, created_at DESC);
 ## References
 
 For detailed guidance, see:
+
 - [references/schema-design.md](references/schema-design.md) - Naming conventions, table design patterns
 - [references/migrations.md](references/migrations.md) - Migration best practices, reversible migrations
 - [references/performance.md](references/performance.md) - Indexing strategies, query optimization

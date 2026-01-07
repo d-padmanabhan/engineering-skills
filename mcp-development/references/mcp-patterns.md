@@ -63,6 +63,7 @@ if __name__ == "__main__":
 ## Tool Categories
 
 ### Data Retrieval
+
 ```typescript
 {
   name: "search_database",
@@ -79,6 +80,7 @@ if __name__ == "__main__":
 ```
 
 ### Actions
+
 ```typescript
 {
   name: "send_email",
@@ -96,6 +98,7 @@ if __name__ == "__main__":
 ```
 
 ### File Operations
+
 ```typescript
 {
   name: "read_file",
@@ -213,4 +216,3 @@ describe("MCP Server", () => {
   });
 });
 ```
-

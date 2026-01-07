@@ -207,4 +207,3 @@ spec:
     - name: app
       image: myapp:1.0.0
 ```
-
