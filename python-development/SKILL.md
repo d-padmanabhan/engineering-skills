@@ -1,6 +1,6 @@
 ---
 name: python-development
-description: Python development standards for code review and generation. Covers Python 3.12+ patterns, type hints, async/await, testing with pytest, package management with uv, AWS Lambda/boto3 patterns, and Pydantic validation. Use when working with .py files, pyproject.toml, requirements.txt, Lambda functions, or when asking about Python best practices, code review, or generation.
+description: Python development standards for code review and generation. Covers Python 3.14+ patterns including template strings (t-strings), deferred annotations, free-threading, type hints, async/await, testing with pytest, package management with uv, AWS Lambda/boto3 patterns, and Pydantic validation. Use when working with .py files, pyproject.toml, requirements.txt, Lambda functions, or when asking about Python best practices, code review, or generation.
 ---
 
 # Python Development
@@ -19,7 +19,7 @@ Apply features only when they add clarity, correctness, performance, or security
 
 | Aspect | Standard |
 |--------|----------|
-| **Python Version** | ≥ 3.12 |
+| **Python Version** | ≥ 3.14 |
 | **Shebang** | `#!/usr/bin/env -S uv run` |
 | **Formatting** | 4-space indents, 120 char line length |
 | **Linting** | `black`, `ruff`, `pylint` (≥9.0) |
@@ -27,12 +27,12 @@ Apply features only when they add clarity, correctness, performance, or security
 | **Docstrings** | Google-style |
 | **Package Manager** | `uv` (preferred) |
 
-## Type Hints (Python 3.12+)
+## Type Hints
 
 Use built-in types instead of `typing` module:
 
 ```python
-# Modern Python 3.12+
+# Modern Python 3.14+
 def process(items: list[str], config: dict[str, int] | None = None) -> tuple[str, int]:
     ...
 
@@ -40,6 +40,74 @@ def process(items: list[str], config: dict[str, int] | None = None) -> tuple[str
 from typing import List, Dict, Optional, Tuple
 def process(items: List[str], config: Optional[Dict[str, int]] = None) -> Tuple[str, int]:
     ...
+```
+
+## Python 3.14 Features (Released Oct 2025)
+
+### Template String Literals (PEP 750)
+
+Safe custom string processing with t-strings:
+
+```python
+# SQL query with safe parameterization
+query = t"SELECT * FROM users WHERE id = {user_id}"
+
+# HTML generation with auto-escaping
+html = t"<div>{user_input}</div>"
+
+# Custom formatting
+config = t"server={host}:{port}"
+```
+
+### Deferred Annotation Evaluation (PEP 649)
+
+Annotations are no longer evaluated eagerly, improving startup performance:
+
+```python
+# Annotations stored in __annotate__ function
+# Evaluated only when inspect.get_annotations() is called
+def process(data: ComplexType) -> Result:
+    """Annotations evaluated lazily, not at import time."""
+    ...
+```
+
+### Free-Threading Support (PEP 779)
+
+True parallelism without the GIL (experimental):
+
+```python
+# Enable with: python3.14t (free-threaded build)
+# Performance penalty reduced to 5-10% for single-threaded code
+import concurrent.futures
+
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    results = executor.map(cpu_intensive_task, items)
+```
+
+### datetime Improvements
+
+Direct parsing of date and time strings:
+
+```python
+from datetime import date, time
+
+# Python 3.14+
+d = date.fromisoformat("2025-10-07")
+t = time.fromisoformat("14:30:00")
+```
+
+### UUID7 and UUID8 Support
+
+Modern UUID versions with better properties:
+
+```python
+import uuid
+
+# UUID7: Time-ordered, sortable (recommended for databases)
+id = uuid.uuid7()
+
+# UUID8: Custom format
+id = uuid.uuid8(bytes16)
 ```
 
 ## Code Structure

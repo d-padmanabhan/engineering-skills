@@ -14,13 +14,15 @@ For more information, see [Anthropic's Agent Skills documentation](https://platf
 |-------|-------------|
 | **core-engineering** | Core coding standards, code review patterns, and generation guidelines |
 | **agent-workflow** | Plan/Implement/Review workflow with audit requirements |
-| **python-development** | Python 3.12+ standards, type hints, async patterns, testing |
+| **python-development** | Python 3.14+ standards, t-strings, free-threading, type hints, async patterns, testing |
 | **typescript-javascript** | TypeScript/JavaScript patterns, strict typing, ESM |
 | **go-rust-systems** | Go and Rust systems programming patterns |
 | **bash-shell-scripting** | Bash scripting, CLI design, Makefile patterns |
+| **scripting-automation** | Advanced Bash automation, retry logic, testing with BATS |
+| **containers-orchestration** | Docker best practices, multi-stage builds, security scanning |
+| **kubernetes-containers** | Kubernetes and Helm patterns |
 | **infrastructure-iac** | Terraform, Ansible, Docker, CloudFormation |
 | **cloud-platforms** | AWS, Azure, GCP, Cloudflare best practices |
-| **kubernetes-containers** | Kubernetes and Helm patterns |
 | **cicd-github-actions** | GitHub Actions workflows and CI/CD |
 | **security-testing** | OWASP Top 10, testing strategies, API design |
 | **documentation-standards** | Markdown, Mermaid diagrams, technical writing |
@@ -94,8 +96,10 @@ This ensures efficient context usage while providing comprehensive guidance.
 Once installed, Claude automatically uses relevant skills based on your requests:
 
 - "Review this Python code for security issues" → Triggers `python-development` and `security-testing`
+- "Show me how to use Python 3.14 template strings" → Triggers `python-development`
 - "Help me set up a Terraform module for AWS" → Triggers `infrastructure-iac` and `cloud-platforms`
 - "Create a GitHub Actions workflow" → Triggers `cicd-github-actions`
+- "Write a production-grade Bash script with retry logic" → Triggers `scripting-automation`
 
 ## Contributing
 
