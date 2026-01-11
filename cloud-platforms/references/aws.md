@@ -2,6 +2,9 @@
 
 **Goal:** Build secure, scalable, maintainable AWS infrastructure following best practices for Platform Engineering, Zero Trust, and EKS.
 
+> [!IMPORTANT]
+> Use the AWS Well-Architected Framework as the baseline for AWS design and review decisions: [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
+
 ## AWS Engineering Philosophy
 
 **Guiding Principles:**
