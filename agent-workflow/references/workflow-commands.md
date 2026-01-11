@@ -19,6 +19,14 @@ While Claude Skills don't support explicit `/command` syntax like Cursor IDE, th
 
 ---
 
+## Commandify repeated prompts (workflow patterns)
+
+If you find yourself giving the same prompt more than twice, treat it as a workflow smell:
+
+- Convert it into a reusable “command pattern” section in this doc (or a new reference doc)
+- Keep the entrypoint short (what it does, when to use it, output format)
+- Put verbose details in references so they’re only loaded when needed
+
 ## Init - Task Initialization
 
 **Purpose:** Analyze project, detect complexity, set up context

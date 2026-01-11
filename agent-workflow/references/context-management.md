@@ -23,6 +23,31 @@ Context files are workspace-specific and should be in an `extras/` directory:
 4. Preserve context between sessions using files
 5. Be explicit about which phase you're in
 
+## PRD-first development (North Star)
+
+For non-trivial work, keep a single “north star” scope document and use it to drive small, sequential feature slices.
+
+- **Recommended file**: `extras/prd.md`
+- **Greenfield**: Define scope, non-goals, key flows, architecture, milestones
+- **Brownfield**: Capture current state + next desired state + constraints
+- **Rule**: Break work into features small enough for the agent to execute reliably (one feature per cycle)
+
+## Context reset between Plan → Build
+
+When moving from planning to implementation, prefer a fresh context window so the agent has maximum room to reason.
+
+- **Rule**: After the plan is approved, restart the chat/session before coding
+- **Input**: Provide the approved plan doc (and only the minimum extra context needed)
+- **Goal**: Keep implementation context lightweight; avoid carrying long planning threads into execution
+
+## System evolution (make the agent better over time)
+
+Treat recurring mistakes as a signal to improve the system, not just the code:
+
+- **If a bug recurs**: update the relevant skill reference(s) so it doesn’t happen again
+- **If validation was missed**: update templates/workflow guidance to force the check (tests, lint, security scan)
+- **Capture learnings**: record patterns in a `reflect-*.md` doc and keep the guidance crisp
+
 ## QA Validation System
 
 **Purpose:** Technical validation to prevent implementation failures.
