@@ -23,6 +23,7 @@
 - Extensive test suites (provide 1–2 examples instead)
 - Complex frameworks when stdlib suffices
 - Features not in requirements
+- Generic boilerplate text or “best practices” not tied to the task (“AI slop”)
 
 ## Assumption Format
 

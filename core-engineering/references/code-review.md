@@ -77,6 +77,34 @@ Focus on code structure, readability, and maintainability.
 Prioritize high-impact changes that don't require major refactoring.
 ```
 
+## Anti-slop guardrails (write less, say more)
+
+**Default behavior:** Prefer the smallest change that solves the stated problem. If a change, paragraph, or refactor doesn’t clearly earn its keep, don’t add it.
+
+### Banned patterns (AI slop)
+
+- Generic filler (e.g., “Great question”, “Hope this helps”, long restatements of the prompt)
+- Un-grounded “best practices” lists not tied to this repo/PR
+- Speculative features, refactors, or “nice-to-haves” not requested
+- Placeholder code, TODO-only stubs, or incomplete sections
+- Repeating the same point in multiple sections
+
+### Required behaviors
+
+- **Be anchored:** Tie recommendations to concrete evidence (file/line references, errors, command output, or a specific risk)
+- **Be minimal:** Provide the smallest diff that fixes the issue; avoid big-bang rewrites
+- **Be specific:** Replace vague advice with an actionable change (“Change X to Y because Z”)
+- **Be honest about uncertainty:** Mark assumptions explicitly; do not invent details
+- **Prefer deletion over addition** when it improves clarity without breaking behavior
+
+### Slop check (run before replying)
+
+- Can I delete 30% of this response and keep the value?
+- Did I propose any unrequested work? If yes, move it to “Next ideas” or drop it
+- Did I provide at least one concrete action (diff, command, file/line)?
+- Did I avoid generic “best practices” unless they directly apply here?
+- Did I keep examples to the minimum needed to be runnable?
+
 ## Response Format for Code Reviews
 
 ```markdown
