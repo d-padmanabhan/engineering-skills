@@ -41,6 +41,15 @@
 
 - Algorithmic efficiency, database queries, caching opportunities
 
+> [!IMPORTANT]
+> **Performance rewrite requirement (when reviewing existing code):**
+>
+> If you find clearly inefficient logic (e.g., \(O(n^2)\) loops, N+1 queries, repeated expensive work, unnecessary allocations/parsing), you MUST:
+>
+> - Provide a **concrete improved implementation** (minimal diff) that preserves behavior
+> - State the **expected impact** (time/space/calls) and a **measurement plan** (benchmark/metric)
+> - Prefer the **smallest safe change**; do not “optimize everything” without evidence
+
 ## PR Review Formats
 
 ### Standard PR Review

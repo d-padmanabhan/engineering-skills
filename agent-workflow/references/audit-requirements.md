@@ -69,9 +69,13 @@ If verification cannot run, state:
 
 For every non-trivial task, write one report file:
 
+**Repo root (required):**
+
+- `export GIT_REPO_ROOT="$(git rev-parse --show-toplevel)"`
+
 **Path rules:**
 
-- If repo has `extras/` folder that is gitignored: `extras/agent_reports/agent_report_<repo>_<branch>_<timestamp>.md`
+- If `<GIT_REPO_ROOT>/extras/` exists and is gitignored: `<GIT_REPO_ROOT>/extras/agent_reports/agent_report_<repo>_<branch>_<timestamp>.md`
 - Otherwise: `/tmp/agent_report_<repo>_<branch>_<timestamp>.md`
 
 **Required contents:**
@@ -97,14 +101,14 @@ For complex debugging sessions or demos, agents MAY create terminal recordings u
 
 **Recording path:**
 
-- Save to: `extras/agent_reports/recordings/<repo>_<branch>_<yyyymmdd_HHMMSS>.cast`
+- Save to: `<GIT_REPO_ROOT>/extras/agent_reports/recordings/<repo>_<branch>_<yyyymmdd_HHMMSS>.cast`
 - Reference the recording path in the markdown audit report
 
 **How to record:**
 
 ```bash
 # Start recording
-asciinema rec -q extras/agent_reports/recordings/session.cast
+asciinema rec -q "<GIT_REPO_ROOT>/extras/agent_reports/recordings/session.cast"
 
 # ... perform commands ...
 

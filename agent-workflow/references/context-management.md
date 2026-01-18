@@ -4,6 +4,9 @@
 
 Context files are workspace-specific and should be in an `extras/` directory:
 
+> [!NOTE]
+> For prompt packing, retrieval, and “frequent intentional compaction” patterns, see `agent-workflow/references/context-engineering.md`.
+
 ### Project Files
 
 | File | Purpose |
@@ -225,6 +228,16 @@ Not Started
 
 ## Context from Previous Sessions
 [Any important context that needs to be remembered]
+
+## Handoff Bundle (copy/paste)
+
+Goal:
+Non-goals:
+Constraints:
+Current state:
+Next 3 actions:
+Key files/paths:
+Key commands + outputs (verbatim, minimal):
 ```
 
 ### progress.md Template

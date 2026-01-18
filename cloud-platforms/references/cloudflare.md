@@ -1,5 +1,10 @@
 # Cloudflare Patterns
 
+## Naming & Terminology Consistency
+
+- Never use `CloudFlare` anywhere (code/documentation). If found, fix to `Cloudflare`
+- For Cloudflare, do not use the word `Domain`. Always use `Zone`. If any docs mention “Cloudflare Domain”, fix to “Cloudflare Zone”
+
 ## Workers
 
 ### Basic Worker
