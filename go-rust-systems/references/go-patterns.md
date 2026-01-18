@@ -323,6 +323,21 @@ func ProcessData(r io.Reader) (*Result, error) {
 }
 ```
 
+## Dependency Injection (DI) & Application Wiring
+
+**Default (Go-idiomatic):** Prefer manual wiring at the composition root (`cmd/<app>/main.go`). Pass interfaces/structs explicitly via constructors.
+
+Use a DI framework (e.g., `uber/fx`/`dig`, or compile-time `google/wire`) only when it clearly reduces risk/complexity, typically:
+
+- Large dependency graphs changing frequently across teams
+- Consistent lifecycle orchestration (start/stop ordering, cleanup) across modules
+- Multiple servers/workers in one binary needing coordinated shutdown
+
+If you adopt a DI framework:
+
+- Keep framework usage at the edges (composition root); constructors remain plain Go
+- Avoid “service locator” patterns (hidden dependencies); keep deps visible in constructors
+
 ## Testing
 
 ```go
